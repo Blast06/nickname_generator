@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:generator/utils/colors.dart';
 
 
@@ -38,7 +39,10 @@ class SlimCard extends StatelessWidget {
               ],
             ),
           ),
-          IconButton(icon: Icon(Icons.copy), onPressed: () {  } ,)
+          IconButton(icon: Icon(Icons.copy), onPressed: () { 
+             Clipboard.setData(new ClipboardData(text: text));
+             //TODO: add snackbar when this pressed
+           } ,)
         ],
       ),
     );

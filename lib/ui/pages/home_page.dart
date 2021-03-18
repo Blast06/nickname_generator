@@ -4,6 +4,8 @@ import 'package:generator/data/models/Symbols.dart';
 import 'package:generator/ui/widgets/custom_search_text.dart';
 import 'package:generator/ui/widgets/slim_card.dart';
 import 'package:get/get.dart';
+import 'package:flutter/services.dart';
+
 
 class HomePage extends StatelessWidget {
   final hc = Get.put(HomeController());
@@ -26,10 +28,14 @@ class HomePage extends StatelessWidget {
                         child: CustomSearchText(
                             text: hc.nickName,
                             enable: true,
-                            callback: () {},
+                            callback: () {
+                               nameController.text = hc.nickName;
+                               // TODO: Fix bug when generating new nickname and does not change in textbox...
+                            },
                             controller: nameController,
                             callback2: (text) {
                               _.changeNickName(text);
+                              // nameController.text = text;
                             },
                           ),
                       ),

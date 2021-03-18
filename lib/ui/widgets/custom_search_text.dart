@@ -48,7 +48,7 @@ class CustomSearchText extends StatelessWidget {
           hintText: text,
           hintStyle: TextStyle(
               fontSize: 18, fontWeight: FontWeight.w500, color: wood_smoke),
-          contentPadding: EdgeInsets.all(14),
+          contentPadding: EdgeInsets.all(16),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.all(Radius.circular(16))),

@@ -1,6 +1,9 @@
 
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:generator/utils/Translations.dart';
+import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
 
 import 'ui/pages/splash_screen.dart';
@@ -30,10 +33,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'NicknameGenerator',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: appThemeData,
+      translations: MyTransalations(),
+      locale: Get.deviceLocale,
       home: SplashPage(),
       // locale: Get.deviceLocale,
       // translations: MyTransalations(),

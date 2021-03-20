@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
 
 final ThemeData appThemeData = ThemeData(
-  primaryColor: Colors.greenAccent,
+  primaryColor: Color(0xff110f2b),
   accentColor: Color(0xff50514F),
-  splashColor: Colors.purpleAccent,
-  highlightColor: Color(0xff247BA0),
+  splashColor: Colors.white24,
+  highlightColor: Colors.yellow[800],
 //   fontFamily: GoogleFonts.lato().fontFamily,
   textTheme: TextTheme(
     headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),

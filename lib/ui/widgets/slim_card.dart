@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:generator/utils/apptheme.dart';
 import 'package:generator/utils/colors.dart';
 
 
@@ -15,7 +16,7 @@ class SlimCard extends StatelessWidget {
       padding: EdgeInsets.all(7),
       margin: EdgeInsets.symmetric(vertical: 7),
       decoration: ShapeDecoration(
-          color: Colors.white,
+          color: appThemeData.splashColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(16)))),
       child: Row(

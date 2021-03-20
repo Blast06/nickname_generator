@@ -5,10 +5,11 @@ class MyTransalations extends Translations {
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
         'en': {
-          'title': 'Fleets Downloader',
+          'title': 'Nickname Creator',
           'bottom_bar_home': 'Home',
           'bottom_bar_privacy': 'Privacy Policy',
           'bottom_bar_about': 'About',
+          'bottom_bar_symbols': 'Symbols',
           'download_btn': 'Download',
           'hint1_homepage': 'Type the fleets username below',
           'hint2_homepage_text_field_example': 'example: NBA',
@@ -23,10 +24,11 @@ class MyTransalations extends Translations {
           'account_warning': 'Make sure the account is public!'
         },
         'es': {
-          'title': 'Fleets Downloader',
+          'title': 'Crea tu Nickname',
           'bottom_bar_home': 'Inicio',
           'bottom_bar_privacy': 'Politicas privacidad',
           'bottom_bar_about': 'Sobre',
+          'bottom_bar_symbols': 'Mas Simbolos',
           'download_btn': 'Descargar',
           'hint1_homepage': 'Escribe el usuario de twitter debajo',
           'hint2_homepage_text_field_example': 'ejemplo: NBA',
@@ -35,8 +37,8 @@ class MyTransalations extends Translations {
           'user_not_found_description': 'Favor asegurarse',
           'users_fleets_title': 'Fleets',
           'tap_to_download': 'Toca para descargar',
-          'snackbar_download_title': 'Fleet descargado',
-          'snackbar_download_message': 'Revisa tu almacenamiento',
+          'snackbar_download_title': 'Nick copiado!',
+          'snackbar_download_message': 'Revisa tu portapeles',
           'loading_txt': 'Cargando...',
           'account_warning': 'Asegurate de que la cuenta es publica'
         },

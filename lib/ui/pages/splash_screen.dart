@@ -19,7 +19,7 @@ class SplashPage extends StatelessWidget {
             SizedBox(
               height: 5,
             ),
-            Text('loading_txt')
+            Text('loading_txt'.tr)
           ],
         ),
       ),

@@ -3,7 +3,9 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:generator/controllers/HomeController.dart';
 import 'package:generator/utils/colors.dart';
+import 'package:get/get.dart';
 
 typedef StringValue = Void Function(String);
 
@@ -15,6 +17,7 @@ class CustomSearchText extends StatelessWidget {
   final StringValue callback2;
   
   final TextEditingController controller;
+  
 
   const CustomSearchText(
       {this.text, this.enable, this.callback, this.callback2, this.controller});

@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
                 ),
                 IconButton(
                   icon: Icon(Icons.copy_rounded),
-                  onPressed: () =>  Clipboard.setData(new ClipboardData(text: hc.nickName))
+                  onPressed: () =>  Clipboard.setData(ClipboardData(text: hc.nickName))
                 ),
               ],
             ),

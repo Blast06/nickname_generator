@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 final ThemeData appThemeData = ThemeData(
   primaryColor: Color(0xff110f2b),
-  accentColor: Color(0xff50514F),
-  splashColor: Colors.white24,
+  accentColor: Colors.white,
+  splashColor: Colors.yellow[500],
   highlightColor: Colors.yellow[800],
 //   fontFamily: GoogleFonts.lato().fontFamily,
   textTheme: TextTheme(

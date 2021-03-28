@@ -18,8 +18,9 @@ class MyTransalations extends Translations {
           'user_not_found_description': 'Please make sure..',
           'users_fleets_title': 'Fleets',
           'tap_to_download': 'Tap to Download',
-          'snackbar_download_title': 'Fleet Downloaded!',
-          'snackbar_download_message': 'Check your storage',
+          'snackbar_download_title': 'Nick copied!',
+          'snackbar_download_title2': 'Text copied!',
+          'snackbar_download_message': 'Now can paste it',
           'loading_txt': 'Loading...',
           'account_warning': 'Make sure the account is public!'
         },
@@ -38,6 +39,7 @@ class MyTransalations extends Translations {
           'users_fleets_title': 'Fleets',
           'tap_to_download': 'Toca para descargar',
           'snackbar_download_title': 'Nick copiado!',
+          'snackbar_download_title2': 'Texto copiado!',
           'snackbar_download_message': 'Revisa tu portapeles',
           'loading_txt': 'Cargando...',
           'account_warning': 'Asegurate de que la cuenta es publica'

@@ -22,7 +22,9 @@ class MyTransalations extends Translations {
           'snackbar_download_title2': 'Text copied!',
           'snackbar_download_message': 'Now can paste it',
           'loading_txt': 'Loading...',
-          'account_warning': 'Make sure the account is public!'
+          'account_warning': 'Make sure the account is public!',
+          'copy':'Copy',
+          "symbols":"symbols"
         },
         'es': {
           'title': 'Crea tu Nickname',
@@ -42,7 +44,9 @@ class MyTransalations extends Translations {
           'snackbar_download_title2': 'Texto copiado!',
           'snackbar_download_message': 'Revisa tu portapeles',
           'loading_txt': 'Cargando...',
-          'account_warning': 'Asegurate de que la cuenta es publica'
+          'account_warning': 'Asegurate de que la cuenta es publica',
+          'copy':'Copiar',
+          "symbols":"Simbolos"
         },
       };
 }

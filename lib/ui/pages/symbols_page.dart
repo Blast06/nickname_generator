@@ -32,7 +32,8 @@ class SymbolsPage extends StatelessWidget {
                 callback: () {
                   nameController.text = hc.nickName;
                   TextSelection.fromPosition(
-                      TextPosition(offset: nameController.text.length));
+                    TextPosition(offset: nameController.text.length),
+                  );
                   // TODO: Fix bug when generating new nickname and does not change in textbox if focus is on
                 },
                 controller: nameController,
@@ -50,33 +51,50 @@ class SymbolsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                  icon: Icon(Icons.restore_sharp),
+                // IconButton(
+                //   icon: Icon(Icons.restore_sharp),
+                //   onPressed: () {
+                //     hc.generateRandomNickName();
+                //     FocusScope.of(context).unfocus();
+                //     SystemChannels.textInput.invokeMethod('TextInput.hide');
+                //   },
+                // ),
+                // IconButton(
+                //   icon: Icon(Icons.share_rounded),
+                //   onPressed: () => hc
+                //       .generateRandomNickName(), //TODO: Add share nickname feature
+                // ),
+                // IconButton(
+                //     icon: Icon(Icons.copy_rounded),
+                //     onPressed: () {
+                //       Clipboard.setData(ClipboardData(text: hc.nickName));
+                //       Get.snackbar("snackbar_download_title".tr,
+                //           "snackbar_download_message".tr,
+                //           snackPosition: SnackPosition.BOTTOM,
+                //           backgroundColor: appThemeData.accentColor);
+                //       // nameController.selection = TextSelection.fromPosition(TextPosition(offset: nameController.text.length));
+                //     }),
+                FlatButton.icon(
+                  icon: Icon(Icons.copy_rounded),
+                  label: Text('copy'.tr),
+                  color: appThemeData.accentColor,
                   onPressed: () {
-                    hc.generateRandomNickName();
-                    // FocusScope.of(context).unfocus();
-                    SystemChannels.textInput.invokeMethod('TextInput.hide');
+                    Clipboard.setData(ClipboardData(text: hc.nickName));
+                    Get.snackbar("snackbar_download_title".tr,
+                        "snackbar_download_message".tr,
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: appThemeData.accentColor);
                   },
-                ),
-                IconButton(
-                  icon: Icon(Icons.share_rounded),
-                  onPressed: () => hc
-                      .generateRandomNickName(), //TODO: Add share nickname feature
-                ),
-                IconButton(
-                    icon: Icon(Icons.copy_rounded),
-                    onPressed: () {
-                      Clipboard.setData(ClipboardData(text: hc.nickName));
-                      Get.snackbar("snackbar_download_title".tr,
-                          "snackbar_download_message".tr,
-                          snackPosition: SnackPosition.BOTTOM,
-                          backgroundColor: appThemeData.accentColor);
-                      // nameController.selection = TextSelection.fromPosition(TextPosition(offset: nameController.text.length));
-                    }),
+                )
               ],
             ),
             const SizedBox(
               height: 10,
+            ),
+             Container(
+              alignment: Alignment.topLeft,
+              margin: EdgeInsets.only(left: 8, bottom: 4),
+              child: Text('symbols'.tr, style: TextStyle(fontSize: 20)),
             ),
             Expanded(
               child: GridView.builder(
@@ -110,7 +128,122 @@ class SymbolsPage extends StatelessWidget {
                       ),
                     );
                   }),
-            )
+            ),
+            Container(
+              alignment: Alignment.topLeft,
+              margin: EdgeInsets.only(left: 8, bottom: 4, top: 5),
+              child: Text('Emojis', style: TextStyle(fontSize: 20)),
+            ),
+            Expanded(
+              child: GridView.builder(
+                  padding: EdgeInsets.only(left: 8, right: 8),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 3 / 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    crossAxisCount: 4,
+                  ),
+                  itemCount: emojis.length,
+                  itemBuilder: (BuildContext ctx, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        // hc.inputText(symbols2[index].symbol,
+                        // nameController.selection.start);
+                        Get.snackbar("snackbar_download_title2".tr,
+                            "snackbar_download_message".tr,
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: appThemeData.accentColor);
+                        print("nameController.selection.start");
+                        Clipboard.setData(
+                            ClipboardData(text: emojis[index].symbol));
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(emojis[index].symbol),
+                        decoration: BoxDecoration(
+                            color: appThemeData.accentColor,
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
+                    );
+                  }),
+            ),
+            Container(
+              alignment: Alignment.topLeft,
+              margin: EdgeInsets.only(left: 8, bottom: 4),
+              child: Text('numbers', style: TextStyle(fontSize: 20)),
+            ),
+            Expanded(
+              child: GridView.builder(
+                  padding: EdgeInsets.only(left: 8, right: 8),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 3 / 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    crossAxisCount: 4,
+                  ),
+                  itemCount: numbers.length,
+                  itemBuilder: (BuildContext ctx, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        // hc.inputText(symbols2[index].symbol,
+                        // nameController.selection.start);
+                        Get.snackbar("snackbar_download_title2".tr,
+                            "snackbar_download_message".tr,
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: appThemeData.accentColor);
+                        print("nameController.selection.start");
+                        Clipboard.setData(
+                            ClipboardData(text: numbers[index].symbol));
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(numbers[index].symbol),
+                        decoration: BoxDecoration(
+                            color: appThemeData.accentColor,
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
+                    );
+                  }),
+            ),
+            Container(
+              alignment: Alignment.topLeft,
+              margin: EdgeInsets.only(left: 8, bottom: 4),
+              child: Text('alphabet', style: TextStyle(fontSize: 20)),
+            ),
+            Expanded(
+              child: GridView.builder(
+                  padding: EdgeInsets.only(left: 8, right: 8),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 3 / 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    crossAxisCount: 4,
+                  ),
+                  itemCount: alphabet.length,
+                  itemBuilder: (BuildContext ctx, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        // hc.inputText(symbols2[index].symbol,
+                        // nameController.selection.start);
+                        Get.snackbar("snackbar_download_title2".tr,
+                            "snackbar_download_message".tr,
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: appThemeData.accentColor);
+                        print("nameController.selection.start");
+                        Clipboard.setData(
+                            ClipboardData(text: alphabet[index].symbol));
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(alphabet[index].symbol),
+                        decoration: BoxDecoration(
+                            color: appThemeData.accentColor,
+                            borderRadius: BorderRadius.circular(15)),
+                      ),
+                    );
+                  }),
+            ),
+            
           ],
         ),
       ),

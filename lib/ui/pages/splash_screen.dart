@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 class SplashPage extends StatelessWidget {
   final sp = Get.put(SplashController());
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -7,18 +7,18 @@ import 'package:http/http.dart' as http;
 import 'AdmobController.dart';
 
 class SplashController extends GetxController {
-  // final admob = Get.find<AdmobController>();
+  final admob = Get.find<AdmobController>();
   Logger log = Logger();
 
   bool showInterstitial = false;
   @override
   void onReady() async {
     log.i("onReady of splash controller");
-    // await admob.loadInterstitial();
-    // await prepareApi();
+    await admob.loadInterstitial();
+    await prepareApi();
     super.onReady();
     await Future.delayed(Duration(seconds: 2), () {
-      // admob.showInterstitial();
+      admob.showInterstitial();
       Get.off(HomePage(), transition: Transition.zoom);
     });
   }
@@ -31,10 +31,8 @@ class SplashController extends GetxController {
   }
 
   prepareApi() async {
-    //IF ON HEROKU FREE, DO SOME TASKS TO GET THE SERVER LIVER
-    
-    // final response = await http.get(
-    //   'https://twitter-fleets.herokuapp.com/',
-    // );
+    final response = await http.get(
+      'https://twitter-fleets.herokuapp.com/',
+    );
   }
 }

@@ -1,24 +1,39 @@
 import 'dart:io';
 
-
 import 'package:generator/utils/MyAdmob.dart';
 import 'package:get/get.dart';
+
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
 
-const TEST = false;
+const TEST = true;
 
 class AdmobController extends GetxController {
   // AdmobInterstitial interstitialAd;
+  InterstitialAd myInterstitial;
 
   Logger logger = Logger();
+  AdWidget adWidget;
+  BannerAd symbolsPageBanner;
 
   @override
   void onInit() {
     super.onInit();
     // getInfo();
     logger.i("ADMOB CONTROLLER STARTED");
-    //TODO: test loading the interstitial here
+    prepareAds();
+
+  }
+
+  prepareAds() {
+    BannerAd symbolsPageBanner = BannerAd(
+      adUnitId: getBannerAdId(),
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: AdListener(),
+    );
+    symbolsPageBanner.load();
+    adWidget = AdWidget(ad: symbolsPageBanner);
   }
 
   String getAdMobAppId() {
@@ -57,23 +72,58 @@ class AdmobController extends GetxController {
   }
 
   loadInterstitial() {
-    // interstitialAd = AdmobInterstitial(
-    //     adUnitId: getInterstitialAdId(),
-    //     listener: (AdmobAdEvent event, Map<String, dynamic> args) {
-    //       if (event == AdmobAdEvent.closed) {
-    //         interstitialAd.load();
-    //       }
-    //     });
+    myInterstitial = InterstitialAd(
+      adUnitId: getInterstitialAdId(),
+      request: AdRequest(),
+      listener: AdListener(),
+    );
 
     logger.i("interstitial loading..");
 
-    // interstitialAd.load();
+    myInterstitial.load();
   }
 
   showInterstitial() async {
+    myInterstitial.show();
+
     // if (await interstitialAd.isLoaded) {
     //   logger.i("interstitial is loaded");
     //   interstitialAd.show();
     // }
   }
+
+  final AdListener interAdListener = AdListener(
+    // Called when an ad is successfully received.
+    onAdLoaded: (Ad ad) => print('Ad loaded.'),
+    // Called when an ad request failed.
+    onAdFailedToLoad: (Ad ad, LoadAdError error) {
+      ad.dispose();
+      print('Ad failed to load: $error');
+    },
+    // Called when an ad opens an overlay that covers the screen.
+    onAdOpened: (Ad ad) => print('Ad opened.'),
+    // Called when an ad removes an overlay that covers the screen.
+    onAdClosed: (Ad ad) {
+      ad.dispose();
+      print('Ad closed.');
+    },
+    // Called when an ad is in the process of leaving the application.
+    onApplicationExit: (Ad ad) => print('Left application.'),
+  );
 }
+
+final AdListener bannerAdListener = AdListener(
+  // Called when an ad is successfully received.
+  onAdLoaded: (Ad ad) => print('Ad loaded.'),
+  // Called when an ad request failed.
+  onAdFailedToLoad: (Ad ad, LoadAdError error) {
+    ad.dispose();
+    print('Ad failed to load: $error');
+  },
+  // Called when an ad opens an overlay that covers the screen.
+  onAdOpened: (Ad ad) => print('Ad opened.'),
+  // Called when an ad removes an overlay that covers the screen.
+  onAdClosed: (Ad ad) => print('Ad closed.'),
+  // Called when an ad is in the process of leaving the application.
+  onApplicationExit: (Ad ad) => print('Left application.'),
+);

@@ -3,6 +3,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:generator/controllers/AdmobController.dart';
+import 'package:generator/utils/MyAdmob.dart';
 import 'package:generator/utils/Translations.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,14 @@ import 'ui/pages/splash_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await MobileAds.initialize();
+  await MobileAds.initialize(
+    bannerAdUnitId: 'ca-app-pub-3940256099942544/6300978111',
+    interstitialAdUnitId: MyAdmob.getInterstitialAdId(),
+    appOpenAdUnitId: 'ca-app-pub-3940256099942544/3419835294',
+    
+  );
+  // RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("34FEAA5868007783EAE019607349D798"))
+  MobileAds.setTestDeviceIds(['34FEAA5868007783EAE019607349D798']);
   Get.put(AdmobController());
   // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   // Admob.requestTrackingAuthorization();
@@ -35,7 +43,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'NicknameGenerator',
+      title: 'names',
       debugShowCheckedModeBanner: false,
       theme: appThemeData,
       translations: MyTransalations(),

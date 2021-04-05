@@ -5,31 +5,80 @@ import 'package:generator/controllers/HomeController.dart';
 import 'package:generator/data/models/Symbols.dart';
 import 'package:generator/ui/widgets/bottom_bar.dart';
 import 'package:generator/ui/widgets/custom_search_text.dart';
+import 'package:generator/utils/MyAdmob.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:logger/logger.dart';
+import 'package:native_admob_flutter/native_admob_flutter.dart';
 
-class SymbolsPage extends StatelessWidget {
+class SymbolsPage extends StatefulWidget {
+  @override
+  _SymbolsPageState createState() => _SymbolsPageState();
+}
+
+class _SymbolsPageState extends State<SymbolsPage> with AutomaticKeepAliveClientMixin {
   final hc = Get.put(HomeController());
-  final ac = Get.put(AdmobController());
+
+  final ac = Get.find<AdmobController>();
+
   final TextEditingController nameController = TextEditingController();
+
   Logger logger = Logger();
+
+  final bannerController = BannerAdController();
+
+  @override
+  void initState() {
+    super.initState();
+    bannerController.load();
+
+    bannerController.onEvent.listen((e) {
+      final event = e.keys.first;
+      switch (event) {
+        case BannerAdEvent.loading:
+          logger.i('BannerAdEvent: loading');
+          break;
+        case BannerAdEvent.loaded:
+          logger.i('BannerAdEvent: loaded');
+          break;
+        case BannerAdEvent.loadFailed:
+          final errorCode = e.values.first;
+          logger.i('BannerAdEvent: loadFailed $errorCode');
+          break;
+        case BannerAdEvent.impression:
+          logger.i('BannerAdEvent: ad rendered');
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bannerController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+    final bannerAd = BannerAd(
+        controller: bannerController,
+        size: BannerSize.ADAPTIVE,
+        );
     return Scaffold(
       backgroundColor: Colors.yellow[800],
       appBar: AppBar(
         title: Text('name'),
         backgroundColor: appThemeData.primaryColor,
       ),
-      body: GetBuilder<HomeController>(
-        builder: (_) => Column(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 30, left: 18, right: 18),
-              child: CustomSearchText(
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 30, left: 18, right: 18),
+            child: GetBuilder<HomeController>(
+              builder: (_) => CustomSearchText(
                 text: hc.nickName,
                 enable: true,
                 callback: () {
@@ -49,9 +98,11 @@ class SymbolsPage extends StatelessWidget {
                 },
               ),
             ),
+          ),
 
-            //TODO: Use svg icon
-            Row(
+          //TODO: Use svg icon
+          GetBuilder<HomeController>(
+            builder: (_) => Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // IconButton(
@@ -91,15 +142,17 @@ class SymbolsPage extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            //  Container(
-            //   alignment: Alignment.topLeft,
-            //   margin: EdgeInsets.only(left: 8, bottom: 4),
-            //   child: Text('symbols'.tr, style: TextStyle(fontSize: 20)),
-            // ),
-            Expanded(
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          //  Container(
+          //   alignment: Alignment.topLeft,
+          //   margin: EdgeInsets.only(left: 8, bottom: 4),
+          //   child: Text('symbols'.tr, style: TextStyle(fontSize: 20)),
+          // ),
+          GetBuilder<HomeController>(
+            builder: (_) => Expanded(
               child: GridView.builder(
                   padding: EdgeInsets.only(left: 8, right: 8),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -132,133 +185,134 @@ class SymbolsPage extends StatelessWidget {
                     );
                   }),
             ),
+          ),
 
-            // Container(
-            //   alignment: Alignment.topLeft,
-            //   margin: EdgeInsets.only(left: 8, bottom: 4, top: 5),
-            //   child: Text('Emojis', style: TextStyle(fontSize: 20)),
-            // ),
-            // Expanded(
-            //   child: GridView.builder(
-            //       padding: EdgeInsets.only(left: 8, right: 8),
-            //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //         childAspectRatio: 3 / 2,
-            //         crossAxisSpacing: 20,
-            //         mainAxisSpacing: 20,
-            //         crossAxisCount: 4,
-            //       ),
-            //       itemCount: emojis.length,
-            //       itemBuilder: (BuildContext ctx, index) {
-            //         return GestureDetector(
-            //           onTap: () {
-            //             // hc.inputText(symbols2[index].symbol,
-            //             // nameController.selection.start);
-            //             Get.snackbar("snackbar_download_title2".tr,
-            //                 "snackbar_download_message".tr,
-            //                 snackPosition: SnackPosition.BOTTOM,
-            //                 backgroundColor: appThemeData.accentColor);
-            //             print("nameController.selection.start");
-            //             Clipboard.setData(
-            //                 ClipboardData(text: emojis[index].symbol));
-            //           },
-            //           child: Container(
-            //             alignment: Alignment.center,
-            //             child: Text(emojis[index].symbol),
-            //             decoration: BoxDecoration(
-            //                 color: appThemeData.accentColor,
-            //                 borderRadius: BorderRadius.circular(15)),
-            //           ),
-            //         );
-            //       }),
-            // ),
-            //
-            // Container(
-            //   alignment: Alignment.topLeft,
-            //   margin: EdgeInsets.only(left: 8, bottom: 4),
-            //   child: Text('numbers', style: TextStyle(fontSize: 20)),
-            // ),
-            // Expanded(
-            //   child: GridView.builder(
-            //       padding: EdgeInsets.only(left: 8, right: 8),
-            //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //         childAspectRatio: 3 / 2,
-            //         crossAxisSpacing: 20,
-            //         mainAxisSpacing: 20,
-            //         crossAxisCount: 4,
-            //       ),
-            //       itemCount: numbers.length,
-            //       itemBuilder: (BuildContext ctx, index) {
-            //         return GestureDetector(
-            //           onTap: () {
-            //             // hc.inputText(symbols2[index].symbol,
-            //             // nameController.selection.start);
-            //             Get.snackbar("snackbar_download_title2".tr,
-            //                 "snackbar_download_message".tr,
-            //                 snackPosition: SnackPosition.BOTTOM,
-            //                 backgroundColor: appThemeData.accentColor);
-            //             print("nameController.selection.start");
-            //             Clipboard.setData(
-            //                 ClipboardData(text: numbers[index].symbol));
-            //           },
-            //           child: Container(
-            //             alignment: Alignment.center,
-            //             child: Text(numbers[index].symbol),
-            //             decoration: BoxDecoration(
-            //                 color: appThemeData.accentColor,
-            //                 borderRadius: BorderRadius.circular(15)),
-            //           ),
-            //         );
-            //       }),
-            // ),
-            // Container(
-            //   alignment: Alignment.topLeft,
-            //   margin: EdgeInsets.only(left: 8, bottom: 4),
-            //   child: Text('alphabet', style: TextStyle(fontSize: 20)),
-            // ),
-            // Expanded(
-            //   child: GridView.builder(
-            //       padding: EdgeInsets.only(left: 8, right: 8),
-            //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //         childAspectRatio: 3 / 2,
-            //         crossAxisSpacing: 20,
-            //         mainAxisSpacing: 20,
-            //         crossAxisCount: 4,
-            //       ),
-            //       itemCount: alphabet.length,
-            //       itemBuilder: (BuildContext ctx, index) {
-            //         return GestureDetector(
-            //           onTap: () {
-            //             // hc.inputText(symbols2[index].symbol,
-            //             // nameController.selection.start);
-            //             Get.snackbar("snackbar_download_title2".tr,
-            //                 "snackbar_download_message".tr,
-            //                 snackPosition: SnackPosition.BOTTOM,
-            //                 backgroundColor: appThemeData.accentColor);
-            //             print("nameController.selection.start");
-            //             Clipboard.setData(
-            //                 ClipboardData(text: alphabet[index].symbol));
-            //           },
-            //           child: Container(
-            //             alignment: Alignment.center,
-            //             child: Text(alphabet[index].symbol),
-            //             decoration: BoxDecoration(
-            //                 color: appThemeData.accentColor,
-            //                 borderRadius: BorderRadius.circular(15)),
-            //           ),
-            //         );
-            //       }),
-            // ),
-            //
-            // Container(
-            //   alignment: Alignment.center,
-            //   child: ac.adWidget,
-            //   width: ac.symbolsPageBanner.size.width.toDouble(),
-            //   height: ac.symbolsPageBanner.size.height.toDouble(),
-            // )
-          ],
-        ),
+          // Container(
+          //   alignment: Alignment.topLeft,
+          //   margin: EdgeInsets.only(left: 8, bottom: 4, top: 5),
+          //   child: Text('Emojis', style: TextStyle(fontSize: 20)),
+          // ),
+          // Expanded(
+          //   child: GridView.builder(
+          //       padding: EdgeInsets.only(left: 8, right: 8),
+          //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //         childAspectRatio: 3 / 2,
+          //         crossAxisSpacing: 20,
+          //         mainAxisSpacing: 20,
+          //         crossAxisCount: 4,
+          //       ),
+          //       itemCount: emojis.length,
+          //       itemBuilder: (BuildContext ctx, index) {
+          //         return GestureDetector(
+          //           onTap: () {
+          //             // hc.inputText(symbols2[index].symbol,
+          //             // nameController.selection.start);
+          //             Get.snackbar("snackbar_download_title2".tr,
+          //                 "snackbar_download_message".tr,
+          //                 snackPosition: SnackPosition.BOTTOM,
+          //                 backgroundColor: appThemeData.accentColor);
+          //             print("nameController.selection.start");
+          //             Clipboard.setData(
+          //                 ClipboardData(text: emojis[index].symbol));
+          //           },
+          //           child: Container(
+          //             alignment: Alignment.center,
+          //             child: Text(emojis[index].symbol),
+          //             decoration: BoxDecoration(
+          //                 color: appThemeData.accentColor,
+          //                 borderRadius: BorderRadius.circular(15)),
+          //           ),
+          //         );
+          //       }),
+          // ),
+          //
+          // Container(
+          //   alignment: Alignment.topLeft,
+          //   margin: EdgeInsets.only(left: 8, bottom: 4),
+          //   child: Text('numbers', style: TextStyle(fontSize: 20)),
+          // ),
+          // Expanded(
+          //   child: GridView.builder(
+          //       padding: EdgeInsets.only(left: 8, right: 8),
+          //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //         childAspectRatio: 3 / 2,
+          //         crossAxisSpacing: 20,
+          //         mainAxisSpacing: 20,
+          //         crossAxisCount: 4,
+          //       ),
+          //       itemCount: numbers.length,
+          //       itemBuilder: (BuildContext ctx, index) {
+          //         return GestureDetector(
+          //           onTap: () {
+          //             // hc.inputText(symbols2[index].symbol,
+          //             // nameController.selection.start);
+          //             Get.snackbar("snackbar_download_title2".tr,
+          //                 "snackbar_download_message".tr,
+          //                 snackPosition: SnackPosition.BOTTOM,
+          //                 backgroundColor: appThemeData.accentColor);
+          //             print("nameController.selection.start");
+          //             Clipboard.setData(
+          //                 ClipboardData(text: numbers[index].symbol));
+          //           },
+          //           child: Container(
+          //             alignment: Alignment.center,
+          //             child: Text(numbers[index].symbol),
+          //             decoration: BoxDecoration(
+          //                 color: appThemeData.accentColor,
+          //                 borderRadius: BorderRadius.circular(15)),
+          //           ),
+          //         );
+          //       }),
+          // ),
+          // Container(
+          //   alignment: Alignment.topLeft,
+          //   margin: EdgeInsets.only(left: 8, bottom: 4),
+          //   child: Text('alphabet', style: TextStyle(fontSize: 20)),
+          // ),
+          // Expanded(
+          //   child: GridView.builder(
+          //       padding: EdgeInsets.only(left: 8, right: 8),
+          //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //         childAspectRatio: 3 / 2,
+          //         crossAxisSpacing: 20,
+          //         mainAxisSpacing: 20,
+          //         crossAxisCount: 4,
+          //       ),
+          //       itemCount: alphabet.length,
+          //       itemBuilder: (BuildContext ctx, index) {
+          //         return GestureDetector(
+          //           onTap: () {
+          //             // hc.inputText(symbols2[index].symbol,
+          //             // nameController.selection.start);
+          //             Get.snackbar("snackbar_download_title2".tr,
+          //                 "snackbar_download_message".tr,
+          //                 snackPosition: SnackPosition.BOTTOM,
+          //                 backgroundColor: appThemeData.accentColor);
+          //             print("nameController.selection.start");
+          //             Clipboard.setData(
+          //                 ClipboardData(text: alphabet[index].symbol));
+          //           },
+          //           child: Container(
+          //             alignment: Alignment.center,
+          //             child: Text(alphabet[index].symbol),
+          //             decoration: BoxDecoration(
+          //                 color: appThemeData.accentColor,
+          //                 borderRadius: BorderRadius.circular(15)),
+          //           ),
+          //         );
+          //       }),
+          // ),
+          //
+          bannerAd
+        ],
       ),
       bottomNavigationBar: BottomBar(),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
+  
 }

@@ -1,5 +1,9 @@
 import 'dart:io';
 
+
+
+const TEST = true;
+
 class MyAdmob {
   //TEST
   static final String TEST_app_id_ios =
@@ -15,25 +19,83 @@ class MyAdmob {
   static final String TEST_interstitial_id_android =
       'ca-app-pub-3940256099942544/1033173712';
 
+  static final String TEST_open_ad_id_android =
+      'ca-app-pub-3940256099942544/3419835294';
+  static final String TEST_open_ad_id_ios =
+      'ca-app-pub-3940256099942544/3419835294';
+
   //PROD
   static final String PROD_app_id_ios =
       'ca-app-pub-4473546092325949~3852512696';
   static final String PROD_app_id_android =
-      'ca-app-pub-4473546092325949~7375288910';
+      'ca-app-pub-4473546092325949~7701039588';
   static final String PROD_banner_id_ios =
       'ca-app-pub-4473546092325949/1034777663';
   static final String PROD_banner_id_android =
-      'ca-app-pub-4473546092325949/4749125570';
+      'ca-app-pub-4473546092325949/1106683403';
   static final String PROD_interstitial_id_ios =
       'ca-app-pub-4473546092325949/5977496040';
   static final String PROD_interstitial_id_android =
       'ca-app-pub-4473546092325949/7977432875';
+  static final String PROD_open_ad_id_android =
+      'ca-app-pub-4473546092325949/4883304558';
+  static final String PROD_open_ad_id_ios =
+      'ca-app-pub-3940256099942544/3419835294';
 
   static String getAppName() {
     if (Platform.isAndroid) {
-      return 'Match Animals';
+      return 'Nickname';
     } else {
-      return 'Brain Game. Picture Match 2021';
+      return 'Nickname creator';
     }
+  }
+
+
+  static String getAdMobAppId() {
+    if (Platform.isIOS) {
+      return TEST ? MyAdmob.TEST_app_id_ios : MyAdmob.PROD_app_id_ios;
+    } else if (Platform.isAndroid) {
+      return TEST ? MyAdmob.TEST_app_id_android : MyAdmob.PROD_app_id_android;
+    }
+    return null;
+  }
+
+  static String getBannerAdId() {
+    if (Platform.isIOS) {
+      // return ;
+      return TEST ? MyAdmob.TEST_banner_id_ios : MyAdmob.PROD_banner_id_ios;
+    } else if (Platform.isAndroid) {
+      // return ;
+      return TEST
+          ? MyAdmob.TEST_banner_id_android
+          : MyAdmob.PROD_banner_id_android;
+    }
+    return null;
+  }
+
+  static String getInterstitialAdId() {
+    if (Platform.isIOS) {
+      return TEST
+          ? MyAdmob.TEST_interstitial_id_ios
+          : MyAdmob.PROD_interstitial_id_ios;
+    } else if (Platform.isAndroid) {
+      return TEST
+          ? MyAdmob.TEST_interstitial_id_android
+          : MyAdmob.PROD_interstitial_id_android;
+    }
+    return null;
+  }
+
+static String getOpenAdId() {
+    if (Platform.isIOS) {
+      return TEST
+          ? MyAdmob.TEST_open_ad_id_ios
+          : MyAdmob.PROD_open_ad_id_ios;
+    } else if (Platform.isAndroid) {
+      return TEST
+          ? MyAdmob.TEST_open_ad_id_android
+          : MyAdmob.PROD_open_ad_id_android;
+    }
+    return null;
   }
 }

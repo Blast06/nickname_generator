@@ -5,35 +5,31 @@ import 'package:get/get.dart';
 
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
+import 'package:native_admob_flutter/native_admob_flutter.dart';
 
-const TEST = true;
+const TEST = false;
 
 class AdmobController extends GetxController {
   // AdmobInterstitial interstitialAd;
-  InterstitialAd myInterstitial;
+  InterstitialAd interstitialAd;
+
+  AppOpenAd appOpenAd;
+
+  final bannerController = BannerAdController();
+
 
   Logger logger = Logger();
-  AdWidget adWidget;
-  BannerAd symbolsPageBanner;
 
   @override
   void onInit() {
     super.onInit();
     // getInfo();
     logger.i("ADMOB CONTROLLER STARTED");
-    prepareAds();
-
   }
 
-  prepareAds() {
-    BannerAd symbolsPageBanner = BannerAd(
-      adUnitId: getBannerAdId(),
-      size: AdSize.banner,
-      request: AdRequest(),
-      listener: AdListener(),
-    );
-    symbolsPageBanner.load();
-    adWidget = AdWidget(ad: symbolsPageBanner);
+  void onClose() {
+    bannerController.dispose();
+ 
   }
 
   String getAdMobAppId() {
@@ -71,59 +67,65 @@ class AdmobController extends GetxController {
     return null;
   }
 
+String getOpenAdId() {
+    if (Platform.isIOS) {
+      return TEST
+          ? MyAdmob.TEST_open_ad_id_ios
+          : MyAdmob.PROD_open_ad_id_ios;
+    } else if (Platform.isAndroid) {
+      return TEST
+          ? MyAdmob.TEST_open_ad_id_android
+          : MyAdmob.PROD_open_ad_id_android;
+    }
+    return null;
+  }
   loadInterstitial() {
-    myInterstitial = InterstitialAd(
-      adUnitId: getInterstitialAdId(),
-      request: AdRequest(),
-      listener: AdListener(),
-    );
+    interstitialAd = InterstitialAd(unitId: getInterstitialAdId());
+    // myInterstitial = InterstitialAd(
+    //   adUnitId: getInterstitialAdId(),
+    //   request: AdRequest(),
+    //   listener: AdListener(),
+    // );
 
     logger.i("interstitial loading..");
 
-    myInterstitial.load();
+    interstitialAd.load();
   }
 
   showInterstitial() async {
-    myInterstitial.show();
-
-    // if (await interstitialAd.isLoaded) {
-    //   logger.i("interstitial is loaded");
-    //   interstitialAd.show();
-    // }
+    if (interstitialAd.isLoaded) {
+      logger.i("interstitial is loaded");
+      interstitialAd.show();
+    }
   }
 
-  final AdListener interAdListener = AdListener(
-    // Called when an ad is successfully received.
-    onAdLoaded: (Ad ad) => print('Ad loaded.'),
-    // Called when an ad request failed.
-    onAdFailedToLoad: (Ad ad, LoadAdError error) {
-      ad.dispose();
-      print('Ad failed to load: $error');
-    },
-    // Called when an ad opens an overlay that covers the screen.
-    onAdOpened: (Ad ad) => print('Ad opened.'),
-    // Called when an ad removes an overlay that covers the screen.
-    onAdClosed: (Ad ad) {
-      ad.dispose();
-      print('Ad closed.');
-    },
-    // Called when an ad is in the process of leaving the application.
-    onApplicationExit: (Ad ad) => print('Left application.'),
-  );
-}
+  loadOpenad() {
+    appOpenAd = AppOpenAd(timeout: Duration(minutes: 30),unitId: getOpenAdId() );
 
-final AdListener bannerAdListener = AdListener(
-  // Called when an ad is successfully received.
-  onAdLoaded: (Ad ad) => print('Ad loaded.'),
-  // Called when an ad request failed.
-  onAdFailedToLoad: (Ad ad, LoadAdError error) {
-    ad.dispose();
-    print('Ad failed to load: $error');
-  },
-  // Called when an ad opens an overlay that covers the screen.
-  onAdOpened: (Ad ad) => print('Ad opened.'),
-  // Called when an ad removes an overlay that covers the screen.
-  onAdClosed: (Ad ad) => print('Ad closed.'),
-  // Called when an ad is in the process of leaving the application.
-  onApplicationExit: (Ad ad) => print('Left application.'),
-);
+    appOpenAd.load(orientation: APP_OPEN_AD_ORIENTATION_PORTRAIT);
+  }
+
+  showAppOpen() async {
+    if (!appOpenAd.isAvaiable) await appOpenAd.load();
+    if (appOpenAd.isAvaiable) {
+      await appOpenAd.show();
+      // Load a new ad right after the other one was closed
+      appOpenAd.load();
+    }
+  }
+
+  showBanner() async {
+    bannerController.onEvent.listen((e) {
+      final event = e.keys.first;
+      // final info = e.values.first;
+      switch (event) {
+        case BannerAdEvent.loaded:
+          // setState(() => _bannerAdHeight = (info as int)?.toDouble());
+          break;
+        default:
+          break;
+      }
+    });
+    bannerController.load();
+  }
+}

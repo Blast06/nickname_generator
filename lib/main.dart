@@ -10,6 +10,8 @@ import 'package:get/get.dart';
 import 'package:native_admob_flutter/native_admob_flutter.dart';
 
 import 'ui/pages/splash_screen.dart';
+import 'package:flutter/services.dart';
+
 //import 'package:device_preview/device_preview.dart';
 
 //THIS IS TO ENABLE DEVICE PREVIEW
@@ -23,9 +25,9 @@ import 'ui/pages/splash_screen.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await MobileAds.initialize(
-    bannerAdUnitId: 'ca-app-pub-3940256099942544/6300978111',
+    bannerAdUnitId: MyAdmob.getBannerAdId(),
     interstitialAdUnitId: MyAdmob.getInterstitialAdId(),
-    appOpenAdUnitId: 'ca-app-pub-3940256099942544/3419835294',
+    appOpenAdUnitId: MyAdmob.getOpenAdId(),
     
   );
   // RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("34FEAA5868007783EAE019607349D798"))
@@ -33,6 +35,10 @@ void main() async{
   Get.put(AdmobController());
   // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   // Admob.requestTrackingAuthorization();
+  // 
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  //   systemNavigationBarColor: Colors.greenAccent,
+  // ));
   runApp(MyApp());
 }
 

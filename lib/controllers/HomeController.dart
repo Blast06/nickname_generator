@@ -40,7 +40,7 @@ class HomeController extends GetxController {
 
   String replaceString(text, textToReplace) {
     text = text.replaceAll('1', textToReplace); 
-    update();
+    // update();
     return text;
   }
 

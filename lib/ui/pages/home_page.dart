@@ -8,20 +8,31 @@ import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
+import 'package:native_admob_flutter/native_admob_flutter.dart';
 
 class HomePage extends StatelessWidget {
   final hc = Get.put(HomeController());
   final TextEditingController nameController = TextEditingController();
 
+  final bannerAd = BannerAd(
+        // controller: bannerController,
+        size: BannerSize.ADAPTIVE,
+        options: BannerAdOptions(
+          reloadWhenSizeChanges: false,
+          reloadWhenUnitIdChanges: false,
+        ),);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.yellow[800],
-      appBar: AppBar(title: Text('Nickname Generator'), backgroundColor: appThemeData.primaryColor,),
-      body: GetBuilder<HomeController>(
-        builder: (_) => Column(
-          children: [
-            Container(
+      appBar: AppBar(
+        title: Text('Nickname Generator'),
+      ),
+      body: Column(
+        children: [
+          GetBuilder<HomeController>(
+            builder: (_) => Container(
               margin: EdgeInsets.only(top: 30, left: 18, right: 18),
               child: CustomSearchText(
                 text: hc.nickName,
@@ -36,9 +47,11 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
+          ),
 
-            //TODO: Use svg icon
-            Row(
+          //TODO: Use svg icon
+          GetBuilder<HomeController>(
+            builder: (_) => Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
@@ -50,40 +63,46 @@ class HomePage extends StatelessWidget {
                   onPressed: () => hc.generateRandomNickName(),
                 ),
                 IconButton(
-                  icon: Icon(Icons.copy_rounded),
-                  onPressed: () =>  Clipboard.setData(ClipboardData(text: hc.nickName))
-                ),
+                    icon: Icon(Icons.copy_rounded),
+                    onPressed: () =>
+                        Clipboard.setData(ClipboardData(text: hc.nickName))),
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemCount: symbols.length,
-                itemBuilder: (BuildContext context, int index) {
-                  int lastOne = symbols.length - 1;
-                  if (index == lastOne) {
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+
+          Expanded(
+            child: GetBuilder<HomeController>(
+                builder: (_) => ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: symbols.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    int lastOne = symbols.length - 1;
+                    if (index == lastOne) {
+                      return Container(
+                          margin: EdgeInsets.only(left: 7, right: 7),
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text('More'),
+                          ));
+                    }
+
+                    // return Text('holaa');
                     return Container(
-                        margin: EdgeInsets.only(left: 7, right: 7),
-                        child: FlatButton.icon(
-                          icon: Icon(Icons.restore_sharp),
-                          onPressed: () {},
-                          label: Text('More'),
-                        ));
-                  }
-                  return Container(
-                    margin: EdgeInsets.only(left: 7, right: 7),
-                    child: SlimCard(
-                      text: _.replaceString(symbols[index].symbol, _.nickName),
-                    ),
-                  );
-                },
+                      margin: EdgeInsets.only(left: 7, right: 7),
+                      child: SlimCard(
+                        text: _.replaceString(symbols[index].symbol, _.nickName)
+                      ),
+                    );
+                  },
+                ),
               ),
-            )
-          ],
-        ),
+          ),
+        
+          
+        ],
       ),
       bottomNavigationBar: BottomBar(),
     );

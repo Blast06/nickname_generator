@@ -10,7 +10,12 @@ class SingleNickname extends StatelessWidget {
         title: Text('Edit your nickname'),
       ),
       body: Container(),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: Column(
+        children: [
+          
+          BottomBar(),
+        ],
+      ),
     );
   }
 }

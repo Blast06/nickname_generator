@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:logger/logger.dart';
 
 
-const TEST = true;
+
+const TEST = false;
 
 class MyAdmob {
   //TEST
@@ -57,7 +59,6 @@ class MyAdmob {
     } else if (Platform.isAndroid) {
       return TEST ? MyAdmob.TEST_app_id_android : MyAdmob.PROD_app_id_android;
     }
-    return null;
   }
 
   static String getBannerAdId() {
@@ -70,7 +71,7 @@ class MyAdmob {
           ? MyAdmob.TEST_banner_id_android
           : MyAdmob.PROD_banner_id_android;
     }
-    return null;
+    return 'null';
   }
 
   static String getInterstitialAdId() {
@@ -83,19 +84,23 @@ class MyAdmob {
           ? MyAdmob.TEST_interstitial_id_android
           : MyAdmob.PROD_interstitial_id_android;
     }
-    return null;
+    return 'null';
   }
 
-static String getOpenAdId() {
+ static String getOpenAdId() {
     if (Platform.isIOS) {
       return TEST
           ? MyAdmob.TEST_open_ad_id_ios
           : MyAdmob.PROD_open_ad_id_ios;
     } else if (Platform.isAndroid) {
+      print(" ✔ ❤ => THIS IS ADMOB FOR ANDROID");
       return TEST
-          ? MyAdmob.TEST_open_ad_id_android
-          : MyAdmob.PROD_open_ad_id_android;
+          ?  MyAdmob.TEST_open_ad_id_android
+          :  MyAdmob.PROD_open_ad_id_android;
+
     }
-    return null;
+
+    
+    
   }
 }

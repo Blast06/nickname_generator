@@ -16,7 +16,7 @@ class SymbolsPage extends StatefulWidget {
   _SymbolsPageState createState() => _SymbolsPageState();
 }
 
-class _SymbolsPageState extends State<SymbolsPage> with AutomaticKeepAliveClientMixin {
+class _SymbolsPageState extends State<SymbolsPage> {
   final hc = Get.put(HomeController());
 
   final ac = Get.find<AdmobController>();
@@ -25,60 +25,62 @@ class _SymbolsPageState extends State<SymbolsPage> with AutomaticKeepAliveClient
 
   Logger logger = Logger();
 
-  final bannerController = BannerAdController();
+  // final bannerController = BannerAdController();
 
   @override
   void initState() {
     super.initState();
-    bannerController.load();
+    // bannerController.load();
 
-    bannerController.onEvent.listen((e) {
-      final event = e.keys.first;
-      switch (event) {
-        case BannerAdEvent.loading:
-          logger.i('BannerAdEvent: loading');
-          break;
-        case BannerAdEvent.loaded:
-          logger.i('BannerAdEvent: loaded');
-          break;
-        case BannerAdEvent.loadFailed:
-          final errorCode = e.values.first;
-          logger.i('BannerAdEvent: loadFailed $errorCode');
-          break;
-        case BannerAdEvent.impression:
-          logger.i('BannerAdEvent: ad rendered');
-          break;
-        default:
-          break;
-      }
-    });
+    // bannerController.onEvent.listen((e) {
+    //   final event = e.keys.first;
+    //   switch (event) {
+    //     case BannerAdEvent.loading:
+    //       logger.i('BannerAdEvent: loading');
+    //       break;
+    //     case BannerAdEvent.loaded:
+    //       logger.i('BannerAdEvent: loaded');
+    //       break;
+    //     case BannerAdEvent.loadFailed:
+    //       final errorCode = e.values.first;
+    //       logger.i('BannerAdEvent: loadFailed $errorCode');
+    //       break;
+    //     case BannerAdEvent.impression:
+    //       logger.i('BannerAdEvent: ad rendered');
+    //       break;
+    //     default:
+    //       break;
+    //   }
+    // });
   }
 
   @override
   void dispose() {
     super.dispose();
-    bannerController.dispose();
+    // bannerController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
+
     final bannerAd = BannerAd(
-        controller: bannerController,
+        // controller: bannerController,
         size: BannerSize.ADAPTIVE,
-        );
+        options: BannerAdOptions(
+          reloadWhenSizeChanges: false,
+          reloadWhenUnitIdChanges: false,
+        ));
     return Scaffold(
       backgroundColor: Colors.yellow[800],
       appBar: AppBar(
         title: Text('name'),
         backgroundColor: appThemeData.primaryColor,
       ),
-      body: Column(
+      body: GetBuilder<HomeController>(builder: (_)  => Column(
         children: [
           Container(
             margin: EdgeInsets.only(top: 30, left: 18, right: 18),
-            child: GetBuilder<HomeController>(
-              builder: (_) => CustomSearchText(
+            child: CustomSearchText(
                 text: hc.nickName,
                 enable: true,
                 callback: () {
@@ -97,12 +99,11 @@ class _SymbolsPageState extends State<SymbolsPage> with AutomaticKeepAliveClient
                   _.changeNickName(text);
                 },
               ),
-            ),
+            
           ),
 
           //TODO: Use svg icon
-          GetBuilder<HomeController>(
-            builder: (_) => Row(
+          Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // IconButton(
@@ -142,7 +143,7 @@ class _SymbolsPageState extends State<SymbolsPage> with AutomaticKeepAliveClient
                 )
               ],
             ),
-          ),
+          
           const SizedBox(
             height: 10,
           ),
@@ -151,8 +152,7 @@ class _SymbolsPageState extends State<SymbolsPage> with AutomaticKeepAliveClient
           //   margin: EdgeInsets.only(left: 8, bottom: 4),
           //   child: Text('symbols'.tr, style: TextStyle(fontSize: 20)),
           // ),
-          GetBuilder<HomeController>(
-            builder: (_) => Expanded(
+          Expanded(
               child: GridView.builder(
                   padding: EdgeInsets.only(left: 8, right: 8),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -185,7 +185,7 @@ class _SymbolsPageState extends State<SymbolsPage> with AutomaticKeepAliveClient
                     );
                   }),
             ),
-          ),
+          
 
           // Container(
           //   alignment: Alignment.topLeft,
@@ -306,13 +306,8 @@ class _SymbolsPageState extends State<SymbolsPage> with AutomaticKeepAliveClient
           bannerAd
         ],
       ),
+      ),
       bottomNavigationBar: BottomBar(),
     );
   }
-
-  @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
-
-  
 }

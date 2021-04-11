@@ -100,14 +100,14 @@ String getOpenAdId() {
   }
 
   loadOpenad() {
-    appOpenAd = AppOpenAd(timeout: Duration(minutes: 30),unitId: getOpenAdId() );
+    appOpenAd = AppOpenAd(timeout: Duration(minutes: 30) );
 
-    appOpenAd.load(orientation: APP_OPEN_AD_ORIENTATION_PORTRAIT);
+    appOpenAd.load(orientation: AppOpenAd.ORIENTATION_PORTRAIT);
   }
 
   showAppOpen() async {
-    if (!appOpenAd.isAvaiable) await appOpenAd.load();
-    if (appOpenAd.isAvaiable) {
+    if (!appOpenAd.isAvailable) await appOpenAd.load();
+    if (appOpenAd.isAvailable) {
       await appOpenAd.show();
       // Load a new ad right after the other one was closed
       appOpenAd.load();

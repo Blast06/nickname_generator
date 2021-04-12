@@ -15,12 +15,13 @@ class HomePage extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
 
   final bannerAd = BannerAd(
-        // controller: bannerController,
-        size: BannerSize.ADAPTIVE,
-        options: BannerAdOptions(
-          reloadWhenSizeChanges: false,
-          reloadWhenUnitIdChanges: false,
-        ),);
+    // controller: bannerController,
+    size: BannerSize.ADAPTIVE,
+    options: BannerAdOptions(
+      reloadWhenSizeChanges: false,
+      reloadWhenUnitIdChanges: false,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +60,14 @@ class HomePage extends StatelessWidget {
                   onPressed: () => hc.generateRandomNickName(),
                 ),
                 IconButton(
-                  icon: Icon(Icons.share_rounded),
-                  onPressed: () => hc.generateRandomNickName(),
-                ),
-                IconButton(
                     icon: Icon(Icons.copy_rounded),
-                    onPressed: () =>
-                        Clipboard.setData(ClipboardData(text: hc.nickName))),
+                    onPressed: () {
+                      Clipboard.setData(ClipboardData(text: hc.nickName));
+                       Get.snackbar("snackbar_download_title".tr,
+                        "snackbar_download_message".tr,
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: appThemeData.accentColor);
+                    }),
               ],
             ),
           ),
@@ -75,33 +77,31 @@ class HomePage extends StatelessWidget {
 
           Expanded(
             child: GetBuilder<HomeController>(
-                builder: (_) => ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: symbols.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    int lastOne = symbols.length - 1;
-                    if (index == lastOne) {
-                      return Container(
-                          margin: EdgeInsets.only(left: 7, right: 7),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text('More'),
-                          ));
-                    }
-
-                    // return Text('holaa');
+              builder: (_) => ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: symbols.length,
+                itemBuilder: (BuildContext context, int index) {
+                  int lastOne = symbols.length - 1;
+                  if (index == lastOne) {
                     return Container(
-                      margin: EdgeInsets.only(left: 7, right: 7),
-                      child: SlimCard(
-                        text: _.replaceString(symbols[index].symbol, _.nickName)
-                      ),
-                    );
-                  },
-                ),
+                        margin: EdgeInsets.only(left: 7, right: 7),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text('More'),
+                        ));
+                  }
+
+                  // return Text('holaa');
+                  return Container(
+                    margin: EdgeInsets.only(left: 7, right: 7),
+                    child: SlimCard(
+                        text:
+                            _.replaceString(symbols[index].symbol, _.nickName)),
+                  );
+                },
               ),
+            ),
           ),
-        
-          
         ],
       ),
       bottomNavigationBar: BottomBar(),

@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 
 
 
-const TEST = false;
+const TEST = true;
 
 class MyAdmob {
   //TEST
@@ -46,9 +46,9 @@ class MyAdmob {
 
   static String getAppName() {
     if (Platform.isAndroid) {
-      return 'Nickname';
+      return 'Nickname generator for Roblox';
     } else {
-      return 'Nickname creator';
+      return 'Nickname generator for Roblox';
     }
   }
 

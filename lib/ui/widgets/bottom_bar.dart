@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:generator/controllers/HomeController.dart';
 import 'package:generator/ui/pages/about_page.dart';
 import 'package:generator/ui/pages/home_page.dart';
+import 'package:generator/ui/pages/privacy_policy.dart';
 import 'package:generator/ui/pages/symbols_page.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
@@ -39,7 +40,7 @@ class _BottomBarState extends State<BottomBar> {
             CustomNavigationBarItem(
               icon: const Icon(Icons.info),
               title: Text(
-                'bottom_bar_about'.tr,
+                'bottom_bar_privacy'.tr,
                 style: TextStyle(color: appThemeData.highlightColor),
               ),
             ),
@@ -55,7 +56,7 @@ class _BottomBarState extends State<BottomBar> {
                 Get.off( () => SymbolsPage(), transition: Transition.cupertino);
                 break;
               case 2: 
-                Get.off( () => AboutPage(), transition: Transition.cupertino);
+                Get.off( () => PrivacyPolicy(), transition: Transition.cupertino);
                 break;
               default: 
                 Get.off( () => HomePage(), transition: Transition.zoom);

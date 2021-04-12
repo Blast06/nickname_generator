@@ -71,9 +71,9 @@ class _SymbolsPageState extends State<SymbolsPage> {
           reloadWhenUnitIdChanges: false,
         ));
     return Scaffold(
-      backgroundColor: Colors.yellow[800],
+      backgroundColor: appThemeData.highlightColor,
       appBar: AppBar(
-        title: Text('name'),
+        title: Text(MyAdmob.getAppName()),
         backgroundColor: appThemeData.primaryColor,
       ),
       body: GetBuilder<HomeController>(builder: (_)  => Column(

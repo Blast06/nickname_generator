@@ -8,7 +8,7 @@ class MyTransalations extends Translations {
           'title': 'Nickname Creator',
           'bottom_bar_home': 'Home',
           'bottom_bar_privacy': 'Privacy Policy',
-          'bottom_bar_about': 'About',
+          'bottom_bar_about': 'Privacy Po',
           'bottom_bar_symbols': 'Symbols',
           'download_btn': 'Download',
           'hint1_homepage': 'Type the fleets username below',

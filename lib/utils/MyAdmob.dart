@@ -46,9 +46,9 @@ class MyAdmob {
 
   static String getAppName() {
     if (Platform.isAndroid) {
-      return 'Nickname generator for Roblox';
+      return 'NicknameS for FF';
     } else {
-      return 'Nickname generator for Roblox';
+      return 'NicknameS for FF';
     }
   }
 

@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'names', //TODO add method to retrieve apps name according to Platform
+      title: MyAdmob.getAppName(), //TODO add method to retrieve apps name according to Platform
       debugShowCheckedModeBanner: false,
       theme: appThemeData,
       translations: MyTransalations(),

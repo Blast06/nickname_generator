@@ -72,14 +72,14 @@ class _SymbolsPageState extends State<SymbolsPage> {
         ));
     return Scaffold(
       backgroundColor: appThemeData.highlightColor,
-      appBar: AppBar(
-        title: Text(MyAdmob.getAppName()),
-        backgroundColor: appThemeData.primaryColor,
-      ),
+      // appBar: AppBar(
+      //   title: Text(MyAdmob.getAppName()),
+      //   backgroundColor: appThemeData.primaryColor,
+      // ),
       body: GetBuilder<HomeController>(builder: (_)  => Column(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 30, left: 18, right: 18),
+            margin: EdgeInsets.only(top: 80, left: 18, right: 18),
             child: CustomSearchText(
                 text: hc.nickName,
                 enable: true,

@@ -4,6 +4,7 @@ import 'package:generator/data/models/Symbols.dart';
 import 'package:generator/ui/widgets/bottom_bar.dart';
 import 'package:generator/ui/widgets/custom_search_text.dart';
 import 'package:generator/ui/widgets/slim_card.dart';
+import 'package:generator/utils/MyAdmob.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
@@ -27,11 +28,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.yellow[800],
-      appBar: AppBar(
-        title: Text('Nickname Generator'),
-      ),
+      // appBar: AppBar(
+      //   title: Text('Nickname Generator'),
+      // ),
       body: Column(
         children: [
+          const SizedBox(
+            height: 80,
+          ),
+          Text(MyAdmob.getAppName(), style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
           GetBuilder<HomeController>(
             builder: (_) => Container(
               margin: EdgeInsets.only(top: 30, left: 18, right: 18),
@@ -71,9 +76,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          // const SizedBox(
+          //   height: 10,
+          // ),
 
           Expanded(
             child: GetBuilder<HomeController>(

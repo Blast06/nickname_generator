@@ -55,11 +55,8 @@ void main() async{
   // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
   //   systemNavigationBarColor: Colors.greenAccent,
   // ));
-  // runApp(MyApp());
- DevicePreview(
-        enabled: !kReleaseMode,
-        builder: (context) => MyApp() // Wrap your app
-      );
+  runApp(MyApp());
+ 
 }
 
 class MyApp extends StatelessWidget {

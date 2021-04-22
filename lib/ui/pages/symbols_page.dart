@@ -62,7 +62,6 @@ class _SymbolsPageState extends State<SymbolsPage> {
 
   @override
   Widget build(BuildContext context) {
-
     final bannerAd = BannerAd(
         // controller: bannerController,
         size: BannerSize.ADAPTIVE,
@@ -76,11 +75,12 @@ class _SymbolsPageState extends State<SymbolsPage> {
       //   title: Text(MyAdmob.getAppName()),
       //   backgroundColor: appThemeData.primaryColor,
       // ),
-      body: GetBuilder<HomeController>(builder: (_)  => Column(
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 80, left: 18, right: 18),
-            child: CustomSearchText(
+      body: GetBuilder<HomeController>(
+        builder: (_) => Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 80, left: 18, right: 18),
+              child: CustomSearchText(
                 text: hc.nickName,
                 enable: true,
                 callback: () {
@@ -99,11 +99,10 @@ class _SymbolsPageState extends State<SymbolsPage> {
                   _.changeNickName(text);
                 },
               ),
-            
-          ),
+            ),
 
-          //TODO: Use svg icon
-          Row(
+            //TODO: Use svg icon
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // IconButton(
@@ -143,16 +142,16 @@ class _SymbolsPageState extends State<SymbolsPage> {
                 )
               ],
             ),
-          
-          const SizedBox(
-            height: 10,
-          ),
-          //  Container(
-          //   alignment: Alignment.topLeft,
-          //   margin: EdgeInsets.only(left: 8, bottom: 4),
-          //   child: Text('symbols'.tr, style: TextStyle(fontSize: 20)),
-          // ),
-          Expanded(
+
+            const SizedBox(
+              height: 10,
+            ),
+            //  Container(
+            //   alignment: Alignment.topLeft,
+            //   margin: EdgeInsets.only(left: 8, bottom: 4),
+            //   child: Text('symbols'.tr, style: TextStyle(fontSize: 20)),
+            // ),
+            Expanded(
               child: GridView.builder(
                   padding: EdgeInsets.only(left: 8, right: 8),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -185,127 +184,126 @@ class _SymbolsPageState extends State<SymbolsPage> {
                     );
                   }),
             ),
-          
 
-          // Container(
-          //   alignment: Alignment.topLeft,
-          //   margin: EdgeInsets.only(left: 8, bottom: 4, top: 5),
-          //   child: Text('Emojis', style: TextStyle(fontSize: 20)),
-          // ),
-          // Expanded(
-          //   child: GridView.builder(
-          //       padding: EdgeInsets.only(left: 8, right: 8),
-          //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //         childAspectRatio: 3 / 2,
-          //         crossAxisSpacing: 20,
-          //         mainAxisSpacing: 20,
-          //         crossAxisCount: 4,
-          //       ),
-          //       itemCount: emojis.length,
-          //       itemBuilder: (BuildContext ctx, index) {
-          //         return GestureDetector(
-          //           onTap: () {
-          //             // hc.inputText(symbols2[index].symbol,
-          //             // nameController.selection.start);
-          //             Get.snackbar("snackbar_download_title2".tr,
-          //                 "snackbar_download_message".tr,
-          //                 snackPosition: SnackPosition.BOTTOM,
-          //                 backgroundColor: appThemeData.accentColor);
-          //             print("nameController.selection.start");
-          //             Clipboard.setData(
-          //                 ClipboardData(text: emojis[index].symbol));
-          //           },
-          //           child: Container(
-          //             alignment: Alignment.center,
-          //             child: Text(emojis[index].symbol),
-          //             decoration: BoxDecoration(
-          //                 color: appThemeData.accentColor,
-          //                 borderRadius: BorderRadius.circular(15)),
-          //           ),
-          //         );
-          //       }),
-          // ),
-          //
-          // Container(
-          //   alignment: Alignment.topLeft,
-          //   margin: EdgeInsets.only(left: 8, bottom: 4),
-          //   child: Text('numbers', style: TextStyle(fontSize: 20)),
-          // ),
-          // Expanded(
-          //   child: GridView.builder(
-          //       padding: EdgeInsets.only(left: 8, right: 8),
-          //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //         childAspectRatio: 3 / 2,
-          //         crossAxisSpacing: 20,
-          //         mainAxisSpacing: 20,
-          //         crossAxisCount: 4,
-          //       ),
-          //       itemCount: numbers.length,
-          //       itemBuilder: (BuildContext ctx, index) {
-          //         return GestureDetector(
-          //           onTap: () {
-          //             // hc.inputText(symbols2[index].symbol,
-          //             // nameController.selection.start);
-          //             Get.snackbar("snackbar_download_title2".tr,
-          //                 "snackbar_download_message".tr,
-          //                 snackPosition: SnackPosition.BOTTOM,
-          //                 backgroundColor: appThemeData.accentColor);
-          //             print("nameController.selection.start");
-          //             Clipboard.setData(
-          //                 ClipboardData(text: numbers[index].symbol));
-          //           },
-          //           child: Container(
-          //             alignment: Alignment.center,
-          //             child: Text(numbers[index].symbol),
-          //             decoration: BoxDecoration(
-          //                 color: appThemeData.accentColor,
-          //                 borderRadius: BorderRadius.circular(15)),
-          //           ),
-          //         );
-          //       }),
-          // ),
-          // Container(
-          //   alignment: Alignment.topLeft,
-          //   margin: EdgeInsets.only(left: 8, bottom: 4),
-          //   child: Text('alphabet', style: TextStyle(fontSize: 20)),
-          // ),
-          // Expanded(
-          //   child: GridView.builder(
-          //       padding: EdgeInsets.only(left: 8, right: 8),
-          //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //         childAspectRatio: 3 / 2,
-          //         crossAxisSpacing: 20,
-          //         mainAxisSpacing: 20,
-          //         crossAxisCount: 4,
-          //       ),
-          //       itemCount: alphabet.length,
-          //       itemBuilder: (BuildContext ctx, index) {
-          //         return GestureDetector(
-          //           onTap: () {
-          //             // hc.inputText(symbols2[index].symbol,
-          //             // nameController.selection.start);
-          //             Get.snackbar("snackbar_download_title2".tr,
-          //                 "snackbar_download_message".tr,
-          //                 snackPosition: SnackPosition.BOTTOM,
-          //                 backgroundColor: appThemeData.accentColor);
-          //             print("nameController.selection.start");
-          //             Clipboard.setData(
-          //                 ClipboardData(text: alphabet[index].symbol));
-          //           },
-          //           child: Container(
-          //             alignment: Alignment.center,
-          //             child: Text(alphabet[index].symbol),
-          //             decoration: BoxDecoration(
-          //                 color: appThemeData.accentColor,
-          //                 borderRadius: BorderRadius.circular(15)),
-          //           ),
-          //         );
-          //       }),
-          // ),
-          //
-          bannerAd
-        ],
-      ),
+            // Container(
+            //   alignment: Alignment.topLeft,
+            //   margin: EdgeInsets.only(left: 8, bottom: 4, top: 5),
+            //   child: Text('Emojis', style: TextStyle(fontSize: 20)),
+            // ),
+            // Expanded(
+            //   child: GridView.builder(
+            //       padding: EdgeInsets.only(left: 8, right: 8),
+            //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //         childAspectRatio: 3 / 2,
+            //         crossAxisSpacing: 20,
+            //         mainAxisSpacing: 20,
+            //         crossAxisCount: 4,
+            //       ),
+            //       itemCount: emojis.length,
+            //       itemBuilder: (BuildContext ctx, index) {
+            //         return GestureDetector(
+            //           onTap: () {
+            //             // hc.inputText(symbols2[index].symbol,
+            //             // nameController.selection.start);
+            //             Get.snackbar("snackbar_download_title2".tr,
+            //                 "snackbar_download_message".tr,
+            //                 snackPosition: SnackPosition.BOTTOM,
+            //                 backgroundColor: appThemeData.accentColor);
+            //             print("nameController.selection.start");
+            //             Clipboard.setData(
+            //                 ClipboardData(text: emojis[index].symbol));
+            //           },
+            //           child: Container(
+            //             alignment: Alignment.center,
+            //             child: Text(emojis[index].symbol),
+            //             decoration: BoxDecoration(
+            //                 color: appThemeData.accentColor,
+            //                 borderRadius: BorderRadius.circular(15)),
+            //           ),
+            //         );
+            //       }),
+            // ),
+            //
+            // Container(
+            //   alignment: Alignment.topLeft,
+            //   margin: EdgeInsets.only(left: 8, bottom: 4),
+            //   child: Text('numbers', style: TextStyle(fontSize: 20)),
+            // ),
+            // Expanded(
+            //   child: GridView.builder(
+            //       padding: EdgeInsets.only(left: 8, right: 8),
+            //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //         childAspectRatio: 3 / 2,
+            //         crossAxisSpacing: 20,
+            //         mainAxisSpacing: 20,
+            //         crossAxisCount: 4,
+            //       ),
+            //       itemCount: numbers.length,
+            //       itemBuilder: (BuildContext ctx, index) {
+            //         return GestureDetector(
+            //           onTap: () {
+            //             // hc.inputText(symbols2[index].symbol,
+            //             // nameController.selection.start);
+            //             Get.snackbar("snackbar_download_title2".tr,
+            //                 "snackbar_download_message".tr,
+            //                 snackPosition: SnackPosition.BOTTOM,
+            //                 backgroundColor: appThemeData.accentColor);
+            //             print("nameController.selection.start");
+            //             Clipboard.setData(
+            //                 ClipboardData(text: numbers[index].symbol));
+            //           },
+            //           child: Container(
+            //             alignment: Alignment.center,
+            //             child: Text(numbers[index].symbol),
+            //             decoration: BoxDecoration(
+            //                 color: appThemeData.accentColor,
+            //                 borderRadius: BorderRadius.circular(15)),
+            //           ),
+            //         );
+            //       }),
+            // ),
+            // Container(
+            //   alignment: Alignment.topLeft,
+            //   margin: EdgeInsets.only(left: 8, bottom: 4),
+            //   child: Text('alphabet', style: TextStyle(fontSize: 20)),
+            // ),
+            // Expanded(
+            //   child: GridView.builder(
+            //       padding: EdgeInsets.only(left: 8, right: 8),
+            //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //         childAspectRatio: 3 / 2,
+            //         crossAxisSpacing: 20,
+            //         mainAxisSpacing: 20,
+            //         crossAxisCount: 4,
+            //       ),
+            //       itemCount: alphabet.length,
+            //       itemBuilder: (BuildContext ctx, index) {
+            //         return GestureDetector(
+            //           onTap: () {
+            //             // hc.inputText(symbols2[index].symbol,
+            //             // nameController.selection.start);
+            //             Get.snackbar("snackbar_download_title2".tr,
+            //                 "snackbar_download_message".tr,
+            //                 snackPosition: SnackPosition.BOTTOM,
+            //                 backgroundColor: appThemeData.accentColor);
+            //             print("nameController.selection.start");
+            //             Clipboard.setData(
+            //                 ClipboardData(text: alphabet[index].symbol));
+            //           },
+            //           child: Container(
+            //             alignment: Alignment.center,
+            //             child: Text(alphabet[index].symbol),
+            //             decoration: BoxDecoration(
+            //                 color: appThemeData.accentColor,
+            //                 borderRadius: BorderRadius.circular(15)),
+            //           ),
+            //         );
+            //       }),
+            // ),
+            //
+            //bannerAd
+          ],
+        ),
       ),
       bottomNavigationBar: BottomBar(),
     );

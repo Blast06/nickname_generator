@@ -31,7 +31,7 @@ flutter_ios_podfile_setup
 
 target 'Runner' do
   # Add the pod for Firebase Crashlytics
-    pod 'Firebase/Crashlytics'
+    # pod 'Firebase/Crashlytics'
     # Recommended: Add the Firebase pod for Google AnalyticsFirebase/Core'
     pod 'Firebase/Core'
     pod 'Firebase/Analytics'

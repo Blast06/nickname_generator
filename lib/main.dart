@@ -1,5 +1,7 @@
 
 
+import 'package:device_preview/plugins.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:generator/controllers/AdmobController.dart';
@@ -12,15 +14,29 @@ import 'package:native_admob_flutter/native_admob_flutter.dart';
 import 'ui/pages/splash_screen.dart';
 import 'package:flutter/services.dart';
 
-//import 'package:device_preview/device_preview.dart';
+import 'package:device_preview/device_preview.dart';
 
 //THIS IS TO ENABLE DEVICE PREVIEW
-// void main() => runApp(
+// void main() async{
+//   WidgetsFlutterBinding.ensureInitialized();
+//     await MobileAds.initialize(
+//     bannerAdUnitId: MyAdmob.getBannerAdId(),
+//     interstitialAdUnitId: MyAdmob.getInterstitialAdId(),
+//     appOpenAdUnitId: MyAdmob.getOpenAdId(),
+    
+//   );
+//   Get.put(AdmobController());
+//    runApp(
 //       DevicePreview(
 //         // enabled: !kReleaseMode,
-//         builder: (context) => MyApp(), // Wrap your app
+//         builder: (context) => MyApp(),
+//         plugins: [
+//           ScreenshotPlugin()
+//         ], // Wrap your app
 //       ),
 //     );
+
+//     }
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +55,11 @@ void main() async{
   // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
   //   systemNavigationBarColor: Colors.greenAccent,
   // ));
-  runApp(MyApp());
+  // runApp(MyApp());
+ DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => MyApp() // Wrap your app
+      );
 }
 
 class MyApp extends StatelessWidget {

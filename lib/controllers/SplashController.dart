@@ -18,7 +18,7 @@ class SplashController extends GetxController {
     await prepareApi();
     super.onReady();
     await Future.delayed(Duration(seconds: 2), () {
-      admob.showAppOpen();
+      // admob.showAppOpen();
       Get.off(HomePage(), transition: Transition.zoom);
     });
   }

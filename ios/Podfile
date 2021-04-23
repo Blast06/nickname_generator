@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, '9.0'
+# platform :ios, '9.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -9,8 +9,6 @@ project 'Runner', {
   'Profile' => :release,
   'Release' => :release,
 }
-
-
 
 def flutter_root
   generated_xcode_build_settings_path = File.expand_path(File.join('..', 'Flutter', 'Generated.xcconfig'), __FILE__)
@@ -30,21 +28,19 @@ require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelpe
 flutter_ios_podfile_setup
 
 target 'Runner' do
-  # Add the pod for Firebase Crashlytics
+   # Add the pod for Firebase Crashlytics
     # pod 'Firebase/Crashlytics'
     # Recommended: Add the Firebase pod for Google AnalyticsFirebase/Core'
-    # pod 'Firebase/Core'
-    # pod 'Firebase/Analytics'
-  use_frameworks!
-  use_modular_headers!
+   pod 'Firebase/Core'
+   pod 'Firebase/Analytics'
+   use_frameworks!
+   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
-    end
+    flutter_additional_ios_build_settings(target)
   end
 end

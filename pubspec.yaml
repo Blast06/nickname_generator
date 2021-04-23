@@ -33,7 +33,7 @@ dependencies:
   logger: ^1.0.0
   native_admob_flutter: ^1.2.0
   in_app_review: ^2.0.1
-  flutter_markdown: ^0.5.1
+  flutter_markdown: ^0.6.1
 
 
 dev_dependencies:

@@ -1,4 +1,5 @@
 import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:basic_utils/basic_utils.dart';
@@ -26,7 +27,7 @@ class HomeController extends GetxController {
   void onInit() async {
     super.onInit();
     logger.i("ON INIT STARTED :D ");
-    checkReview();
+    
   }
 
   @override
@@ -68,6 +69,9 @@ class HomeController extends GetxController {
     logger.v("nickname: $nickName text: $text position: $position");
   }
 
+
+  
+
  
 
   // checks if review is available
@@ -78,5 +82,13 @@ class HomeController extends GetxController {
       inAppReview.openStoreListing(appStoreId: _appStoreId);
     }
   }
+
+    void hideKeyboard(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      FocusManager.instance.primaryFocus.unfocus();
+    }
+  }
+
 
 }

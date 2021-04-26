@@ -1,5 +1,3 @@
-
-
 import 'package:device_preview/plugins.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -23,7 +21,7 @@ import 'package:device_preview/device_preview.dart';
 //     bannerAdUnitId: MyAdmob.getBannerAdId(),
 //     interstitialAdUnitId: MyAdmob.getInterstitialAdId(),
 //     appOpenAdUnitId: MyAdmob.getOpenAdId(),
-    
+
 //   );
 //   Get.put(AdmobController());
 //    runApp(
@@ -38,25 +36,24 @@ import 'package:device_preview/device_preview.dart';
 
 //     }
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final status = await MobileAds.requestTrackingAuthorization();
   await MobileAds.initialize(
     bannerAdUnitId: MyAdmob.getBannerAdId(),
     interstitialAdUnitId: MyAdmob.getInterstitialAdId(),
     appOpenAdUnitId: MyAdmob.getOpenAdId(),
-    
   );
   // RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("34FEAA5868007783EAE019607349D798"))
   MobileAds.setTestDeviceIds(['34FEAA5868007783EAE019607349D798']);
   Get.put(AdmobController());
   // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   // Admob.requestTrackingAuthorization();
-  // 
+  //
   // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
   //   systemNavigationBarColor: Colors.greenAccent,
   // ));
   runApp(MyApp());
- 
 }
 
 class MyApp extends StatelessWidget {
@@ -66,7 +63,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: MyAdmob.getAppName(), //TODO add method to retrieve apps name according to Platform
+      title: MyAdmob
+          .getAppName(), //TODO add method to retrieve apps name according to Platform
       debugShowCheckedModeBanner: false,
       theme: appThemeData,
       translations: MyTransalations(),

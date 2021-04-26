@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nickname.generator">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="Nickname for FF"
         android:icon="@mipmap/ic_launcher">

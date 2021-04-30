@@ -27,33 +27,33 @@ class _SymbolsPageState extends State<SymbolsPage> {
 
   Logger logger = Logger();
 
-  // final bannerController = BannerAdController();
+  final bannerController = BannerAdController();
 
   @override
   void initState() {
     super.initState();
-    // bannerController.load();
+    bannerController.load();
 
-    // bannerController.onEvent.listen((e) {
-    //   final event = e.keys.first;
-    //   switch (event) {
-    //     case BannerAdEvent.loading:
-    //       logger.i('BannerAdEvent: loading');
-    //       break;
-    //     case BannerAdEvent.loaded:
-    //       logger.i('BannerAdEvent: loaded');
-    //       break;
-    //     case BannerAdEvent.loadFailed:
-    //       final errorCode = e.values.first;
-    //       logger.i('BannerAdEvent: loadFailed $errorCode');
-    //       break;
-    //     case BannerAdEvent.impression:
-    //       logger.i('BannerAdEvent: ad rendered');
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    // });
+    bannerController.onEvent.listen((e) {
+      final event = e.keys.first;
+      switch (event) {
+        case BannerAdEvent.loading:
+          logger.i('BannerAdEvent: loading');
+          break;
+        case BannerAdEvent.loaded:
+          logger.i('BannerAdEvent: loaded');
+          break;
+        case BannerAdEvent.loadFailed:
+          final errorCode = e.values.first;
+          logger.i('BannerAdEvent: loadFailed $errorCode');
+          break;
+        case BannerAdEvent.impression:
+          logger.i('BannerAdEvent: ad rendered');
+          break;
+        default:
+          break;
+      }
+    });
   }
 
   @override
@@ -65,7 +65,7 @@ class _SymbolsPageState extends State<SymbolsPage> {
   @override
   Widget build(BuildContext context) {
     final bannerAd = BannerAd(
-        // controller: bannerController,
+        controller: bannerController,
         size: BannerSize.ADAPTIVE,
         options: BannerAdOptions(
           reloadWhenSizeChanges: false,
@@ -307,7 +307,7 @@ class _SymbolsPageState extends State<SymbolsPage> {
               //       }),
               // ),
               //
-              //bannerAd
+              bannerAd
             ],
           ),
         ),

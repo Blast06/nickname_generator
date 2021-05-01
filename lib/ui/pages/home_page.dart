@@ -93,14 +93,14 @@ class HomePage extends StatelessWidget {
                   itemCount: symbols.length,
                   itemBuilder: (BuildContext context, int index) {
                     int lastOne = symbols.length - 1;
-                    if (index == lastOne) {
-                      return Container(
-                          margin: EdgeInsets.only(left: 7, right: 7),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text('More'),
-                          ));
-                    }
+                    // if (index == lastOne) {
+                    //   return Container(
+                    //       margin: EdgeInsets.only(left: 7, right: 7),
+                    //       child: TextButton(
+                    //         onPressed: () {},
+                    //         child: Text('More'),
+                    //       ));
+                    // }
 
                     // return Text('holaa');
                     return Container(

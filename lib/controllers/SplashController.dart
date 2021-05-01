@@ -16,7 +16,7 @@ class SplashController extends GetxController {
     log.i("onReady of splash controller");
     await admob.loadOpenad();
     super.onReady();
-    await Future.delayed(Duration(seconds: 2), () {
+    await Future.delayed(Duration(seconds: 3), () {
       admob.showAppOpen();
       Get.off(HomePage(), transition: Transition.zoom);
     });

@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 
 
 
-const TEST = false;
+const TEST = true;
 
 class MyAdmob {
   //TEST

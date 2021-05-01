@@ -1,4 +1,6 @@
 import 'package:device_preview/plugins.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +40,10 @@ import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final status = await MobileAds.requestTrackingAuthorization();
+  await Firebase.initializeApp();
+  await MobileAds.requestTrackingAuthorization();
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+
   await MobileAds.initialize(
     bannerAdUnitId: MyAdmob.getBannerAdId(),
     interstitialAdUnitId: MyAdmob.getInterstitialAdId(),

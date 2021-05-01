@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:generator/utils/colors.dart';
-
+import 'package:get/get.dart';
 
 class SlimCard extends StatelessWidget {
-  
   final String text;
 
   const SlimCard({Key key, @required this.text}) : super(key: key);
@@ -32,18 +31,25 @@ class SlimCard extends StatelessWidget {
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontSize: 15,
-                      color: wood_smoke,
-                      fontWeight: FontWeight.w600,
-                      ),
+                    fontSize: 15,
+                    color: wood_smoke,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ],
             ),
           ),
-          IconButton(icon: Icon(Icons.copy), onPressed: () { 
-             Clipboard.setData(new ClipboardData(text: text));
-             //TODO: add snackbar when this pressed
-           } ,)
+          IconButton(
+            icon: Icon(Icons.copy),
+            onPressed: () {
+              Clipboard.setData(new ClipboardData(text: text));
+              Get.snackbar(
+                  "snackbar_download_title".tr, "snackbar_download_message".tr,
+                  snackPosition: SnackPosition.BOTTOM,
+                  backgroundColor: appThemeData.accentColor);
+              //TODO: add snackbar when this pressed
+            },
+          )
         ],
       ),
     );

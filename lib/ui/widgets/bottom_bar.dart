@@ -33,7 +33,7 @@ class _BottomBarState extends State<BottomBar> {
                   style: TextStyle(color: appThemeData.highlightColor)),
             ),
             CustomNavigationBarItem(
-              icon: const Icon(Icons.info),
+              icon: const Icon(Icons.more),
               title: Text('bottom_bar_symbols'.tr,
                   style: TextStyle(color: appThemeData.highlightColor)),
             ),

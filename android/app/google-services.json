@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "359439722905",
+    "project_id": "nicknames-generator",
+    "storage_bucket": "nicknames-generator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:359439722905:android:1afebe1b622479987ccb08",
+        "android_client_info": {
+          "package_name": "com.nickname.generatorff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "359439722905-6uiqrpib7qui1b8nb2e5puc1qmqr9cad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcMG-uN0rx_SZeYv9_7V0pj4s0u92qp0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "359439722905-6uiqrpib7qui1b8nb2e5puc1qmqr9cad.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "359439722905-0ul0o9kcmobq87cf907th8bgra9dauvj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nickname.generatorff"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

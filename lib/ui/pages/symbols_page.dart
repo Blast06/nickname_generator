@@ -307,6 +307,7 @@ class _SymbolsPageState extends State<SymbolsPage> {
               //       }),
               // ),
               //
+              SizedBox(width: 0.0, height: 10),
               bannerAd
             ],
           ),

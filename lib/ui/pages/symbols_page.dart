@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:generator/controllers/AdmobController.dart';
@@ -33,6 +34,8 @@ class _SymbolsPageState extends State<SymbolsPage> {
   void initState() {
     super.initState();
     bannerController.load();
+    FirebaseCrashlytics.instance.crash();
+
 
     bannerController.onEvent.listen((e) {
       final event = e.keys.first;

@@ -35,7 +35,7 @@ class _SymbolsPageState extends State<SymbolsPage> {
     super.initState();
     hc.checkReview(); //verify for review
     bannerController.load();
-    FirebaseCrashlytics.instance.crash();
+    
 
 
     bannerController.onEvent.listen((e) {

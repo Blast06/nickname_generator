@@ -33,7 +33,7 @@ class _BottomBarState extends State<BottomBar> {
                   style: TextStyle(color: appThemeData.highlightColor)),
             ),
             CustomNavigationBarItem(
-              icon: const Icon(Icons.more),
+              icon: const Icon(Icons.ac_unit),
               title: Text('bottom_bar_symbols'.tr,
                   style: TextStyle(color: appThemeData.highlightColor)),
             ),
@@ -50,16 +50,17 @@ class _BottomBarState extends State<BottomBar> {
             gc.changeCurrentIndex(index);
             switch (index) {
               case 0:
-                Get.off( () => HomePage(), transition: Transition.cupertino);
+                Get.off(() => HomePage(), transition: Transition.cupertino);
                 break;
-              case 1: 
-                Get.off( () => SymbolsPage(), transition: Transition.cupertino);
+              case 1:
+                Get.off(() => SymbolsPage(), transition: Transition.cupertino);
                 break;
-              case 2: 
-                Get.off( () => PrivacyPolicy(), transition: Transition.cupertino);
+              case 2:
+                Get.off(() => PrivacyPolicy(),
+                    transition: Transition.cupertino);
                 break;
-              default: 
-                Get.off( () => HomePage(), transition: Transition.zoom);
+              default:
+                Get.off(() => HomePage(), transition: Transition.zoom);
                 break;
             }
           }),

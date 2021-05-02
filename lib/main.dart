@@ -41,14 +41,15 @@ import 'package:device_preview/device_preview.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await MobileAds.requestTrackingAuthorization();
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+  
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 
   await MobileAds.initialize(
     bannerAdUnitId: MyAdmob.getBannerAdId(),
     interstitialAdUnitId: MyAdmob.getInterstitialAdId(),
     appOpenAdUnitId: MyAdmob.getOpenAdId(),
   );
+  await MobileAds.requestTrackingAuthorization();
   // RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("34FEAA5868007783EAE019607349D798"))
   MobileAds.setTestDeviceIds(['34FEAA5868007783EAE019607349D798']);
   Get.put(AdmobController());

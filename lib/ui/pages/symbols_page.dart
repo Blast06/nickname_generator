@@ -32,6 +32,7 @@ class _SymbolsPageState extends State<SymbolsPage> {
   @override
   void initState() {
     super.initState();
+    hc.checkReview(); //verify for review
     bannerController.load();
 
     bannerController.onEvent.listen((e) {
@@ -59,7 +60,7 @@ class _SymbolsPageState extends State<SymbolsPage> {
   @override
   void dispose() {
     super.dispose();
-    hc.checkReview(); //verify for review
+    
   }
 
   @override

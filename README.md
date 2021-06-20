@@ -1,4 +1,4 @@
-# flutter_application_1
+# Nickname Generator
 
 A new Flutter project.
 

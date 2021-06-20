@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:generator/controllers/AdmobController.dart';
+import 'package:generator/routes/app_pages.dart';
 import 'package:generator/utils/MyAdmob.dart';
 import 'package:generator/utils/Translations.dart';
 import 'package:generator/utils/apptheme.dart';
@@ -41,7 +42,7 @@ import 'package:device_preview/device_preview.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  
+
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 
   await MobileAds.initialize(
@@ -69,12 +70,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: MyAdmob
-          .getAppName(), //TODO add method to retrieve apps name according to Platform
+      title: MyAdmob.getAppName(),
       debugShowCheckedModeBanner: false,
       theme: appThemeData,
       translations: MyTransalations(),
       locale: Get.deviceLocale,
+      initialRoute: Routes.INITIAL,
       home: SplashPage(),
       // locale: Get.deviceLocale,
       // translations: MyTransalations(),

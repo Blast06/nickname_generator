@@ -9,7 +9,7 @@ class MyTransalations extends Translations {
           'bottom_bar_home': 'Home',
           'bottom_bar_privacy': 'Privacy Policy',
           'bottom_bar_about': 'Privacy Po',
-          'bottom_bar_symbols': 'Symbols',
+          'bottom_bar_symbols': 'More Symbols',
           'download_btn': 'Download',
           'hint1_homepage': 'Type the fleets username below',
           'hint2_homepage_text_field_example': 'example: NBA',
@@ -24,7 +24,7 @@ class MyTransalations extends Translations {
           'loading_txt': 'Loading...',
           'account_warning': 'Make sure the account is public!',
           'copy':'Copy',
-          "symbols":"symbols"
+          "symbols":"More symbols"
         },
         'es': {
           'title': 'Crea tu Nickname',
@@ -33,7 +33,7 @@ class MyTransalations extends Translations {
           'bottom_bar_about': 'Sobre',
           'bottom_bar_symbols': 'Mas Simbolos',
           'download_btn': 'Descargar',
-          'hint1_homepage': 'Escribe el usuario de twitter debajo',
+          'hint1_homepage': 'Escribe el usuario de Twitter debajo',
           'hint2_homepage_text_field_example': 'ejemplo: NBA',
           'dialog_msg': 'Favor, introducir un usuario',
           'user_not_found': 'Usuario no encontrado o no tiene Fleets',

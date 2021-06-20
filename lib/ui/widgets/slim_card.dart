@@ -6,8 +6,9 @@ import 'package:get/get.dart';
 
 class SlimCard extends StatelessWidget {
   final String text;
+  final Widget widget;
 
-  const SlimCard({Key key, @required this.text}) : super(key: key);
+  const SlimCard({Key key, @required this.text , @required this.widget }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class SlimCard extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.copy),
+            icon: widget,
             onPressed: () {
               Clipboard.setData(new ClipboardData(text: text));
               Get.snackbar(

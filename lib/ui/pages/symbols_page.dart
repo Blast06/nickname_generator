@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:generator/controllers/AdmobController.dart';
@@ -8,7 +7,6 @@ import 'package:generator/controllers/HomeController.dart';
 import 'package:generator/data/models/Symbols.dart';
 import 'package:generator/ui/widgets/bottom_bar.dart';
 import 'package:generator/ui/widgets/custom_search_text.dart';
-import 'package:generator/utils/MyAdmob.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
@@ -35,8 +33,6 @@ class _SymbolsPageState extends State<SymbolsPage> {
     super.initState();
     hc.checkReview(); //verify for review
     bannerController.load();
-    
-
 
     bannerController.onEvent.listen((e) {
       final event = e.keys.first;
@@ -63,7 +59,6 @@ class _SymbolsPageState extends State<SymbolsPage> {
   @override
   void dispose() {
     super.dispose();
-    
   }
 
   @override
@@ -76,11 +71,12 @@ class _SymbolsPageState extends State<SymbolsPage> {
           reloadWhenUnitIdChanges: false,
         ));
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         if (Platform.isIOS) hc.hideKeyboard(context);
       },
       child: Scaffold(
         backgroundColor: appThemeData.highlightColor,
+
         // appBar: AppBar(
         //   title: Text(MyAdmob.getAppName()),
         //   backgroundColor: appThemeData.primaryColor,
@@ -170,7 +166,7 @@ class _SymbolsPageState extends State<SymbolsPage> {
                       mainAxisSpacing: 20,
                       crossAxisCount: 4,
                     ),
-                    itemCount: symbols2.length,
+                    itemCount: _.symbols.length, //this has to be parametrized
                     itemBuilder: (BuildContext ctx, index) {
                       return GestureDetector(
                         onTap: () {
@@ -182,11 +178,12 @@ class _SymbolsPageState extends State<SymbolsPage> {
                               backgroundColor: appThemeData.accentColor);
                           print("nameController.selection.start");
                           Clipboard.setData(
-                              ClipboardData(text: symbols2[index].symbol));
+                            ClipboardData(text: _.symbols[index]),
+                          ); //this has to be parametrized
                         },
                         child: Container(
                           alignment: Alignment.center,
-                          child: Text(symbols2[index].symbol),
+                          child: Text(_.symbols[index]),
                           decoration: BoxDecoration(
                               color: appThemeData.accentColor,
                               borderRadius: BorderRadius.circular(15)),

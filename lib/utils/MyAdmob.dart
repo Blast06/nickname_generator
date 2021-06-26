@@ -52,9 +52,9 @@ class MyAdmob {
 
   static String getAppName() {
     if (Platform.isAndroid) {
-      return 'NicknameS for FF';
+      return 'NicknameS Tiktok';
     } else {
-      return 'NicknameS for FF';
+      return 'NicknameS Tiktok';
     }
   }
 

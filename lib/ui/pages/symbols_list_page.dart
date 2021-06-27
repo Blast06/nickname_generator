@@ -7,6 +7,7 @@ import 'package:generator/ui/pages/symbols_page.dart';
 import 'package:generator/ui/widgets/bottom_bar.dart';
 import 'package:generator/ui/widgets/slim_card.dart';
 import 'package:generator/utils/MyAdmob.dart';
+import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:native_admob_flutter/native_admob_flutter.dart';
@@ -71,10 +72,18 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.yellow[800], //TODO: ADD THIS TO THE THEME FILE
+      backgroundColor:
+          appThemeData.highlightColor, //TODO: ADD THIS TO THE THEME FILE
       body: GetBuilder<HomeController>(
         builder: (_) => Column(
           children: [
+            SizedBox(
+              height: 70,
+            ),
+            Text(
+              'symbolsListText'.tr,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: _.symbolsList.length,

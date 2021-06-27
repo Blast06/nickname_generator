@@ -72,7 +72,7 @@ android {
             }
         }
     }
-}
+
 
 flutter {
     source '../..'

@@ -47,37 +47,37 @@ class HomeController extends GetxController {
     logger.v("$index numero");
     switch (index) {
       case 0:
-        logger.v(spheresList);
+        // logger.v(spheresList);
         symbols = spheresList;
         break;
 
       case 1:
-        logger.v(geometricFiguresList);
+        // logger.v(geometricFiguresList);
         symbols = geometricFiguresList;
         break;
 
       case 2:
-        logger.v(emojisList);
+        // logger.v(emojisList);
         symbols = emojisList;
         break;
 
       case 3:
-        logger.v(asciiList);
+        // logger.v(asciiList);
         symbols = asciiList;
         break;
 
       case 4:
-        logger.v(asciiOperatorsList);
+        // logger.v(asciiOperatorsList);
         symbols = asciiOperatorsList;
         break;
 
       case 5:
-        logger.v(nickAlphabetList);
+        // logger.v(nickAlphabetList);
         symbols = nickAlphabetList;
         break;
 
       case 6:
-        logger.v(moreSymbolsList);
+        // logger.v(moreSymbolsList);
         symbols = moreSymbolsList;
         break;
     }

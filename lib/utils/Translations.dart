@@ -5,7 +5,7 @@ class MyTransalations extends Translations {
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
         'en': {
-          'title': 'Nickname Creator',
+          'title': 'Nickname Tiktok',
           'bottom_bar_home': 'Home',
           'bottom_bar_privacy': 'Privacy Policy',
           'bottom_bar_about': 'Privacy Po',
@@ -23,11 +23,12 @@ class MyTransalations extends Translations {
           'snackbar_download_message': 'Now can paste it',
           'loading_txt': 'Loading...',
           'account_warning': 'Make sure the account is public!',
-          'copy':'Copy',
-          "symbols":"More symbols"
+          'copy': 'Copy',
+          "symbols": "More symbols",
+          'symbolsListText': 'More symbols'
         },
         'es': {
-          'title': 'Crea tu Nickname',
+          'title': 'Nombres para Tiktok',
           'bottom_bar_home': 'Inicio',
           'bottom_bar_privacy': 'Politicas privacidad',
           'bottom_bar_about': 'Sobre',
@@ -45,8 +46,9 @@ class MyTransalations extends Translations {
           'snackbar_download_message': 'Revisa tu portapeles',
           'loading_txt': 'Cargando...',
           'account_warning': 'Asegurate de que la cuenta es publica',
-          'copy':'Copiar',
-          "symbols":"Simbolos"
+          'copy': 'Copiar',
+          "symbols": "Simbolos",
+          'symbolsListText': 'Mas estilos'
         },
       };
 }

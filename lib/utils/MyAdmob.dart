@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:logger/logger.dart';
+import 'package:get/get.dart';
 
 const TEST = false;
 
@@ -52,9 +53,9 @@ class MyAdmob {
 
   static String getAppName() {
     if (Platform.isAndroid) {
-      return 'NicknameS Tiktok';
+      return 'title'.tr;
     } else {
-      return 'NicknameS Tiktok';
+      return 'title'.tr;
     }
   }
 

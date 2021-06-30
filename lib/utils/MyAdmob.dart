@@ -41,7 +41,7 @@ class MyAdmob {
   static final String PROD_banner_id_android =
       'ca-app-pub-4473546092325949/9631807547';
   static final String PROD_banner_id_android2 =
-      'ca-app-pub-4473546092325949/2919135517';
+      'ca-app-pub-4473546092325949/9782823115';
   static final String PROD_interstitial_id_ios =
       'ca-app-pub-4473546092325949/5977496040';
   static final String PROD_interstitial_id_android =

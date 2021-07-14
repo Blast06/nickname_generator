@@ -2,7 +2,7 @@
     package="com.nickname.generatorff">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="Nickname for Tiktok"
+        android:label="Name Generator"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

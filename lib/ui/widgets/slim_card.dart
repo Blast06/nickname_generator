@@ -7,8 +7,10 @@ import 'package:get/get.dart';
 class SlimCard extends StatelessWidget {
   final String text;
   final Widget widget;
+  final bool show;
 
-  const SlimCard({Key key, @required this.text, @required this.widget})
+  const SlimCard(
+      {Key key, @required this.text, @required this.widget, this.show = true})
       : super(key: key);
 
   @override
@@ -41,17 +43,19 @@ class SlimCard extends StatelessWidget {
               ],
             ),
           ),
-          IconButton(
-            icon: widget,
-            onPressed: () {
-              Clipboard.setData(new ClipboardData(text: text));
-              Get.snackbar(
-                  "snackbar_download_title".tr, "snackbar_download_message".tr,
-                  snackPosition: SnackPosition.BOTTOM,
-                  backgroundColor: appThemeData.accentColor);
-              //TODO: add snackbar when this pressed
-            },
-          )
+          show
+              ? IconButton(
+                  icon: widget,
+                  onPressed: () {
+                    Clipboard.setData(new ClipboardData(text: text));
+                    Get.snackbar("snackbar_download_title".tr,
+                        "snackbar_download_message".tr,
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: appThemeData.accentColor);
+                    //TODO: add snackbar when this pressed
+                  },
+                )
+              : Text('')
         ],
       ),
     );

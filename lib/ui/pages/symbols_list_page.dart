@@ -111,6 +111,7 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
                       child: SlimCard(
                         text: _.symbolsList[index],
                         widget: Icon(Icons.arrow_forward_ios),
+                        show: false,
                       ),
                     ),
                   );

@@ -19,9 +19,13 @@ class SlimCard extends StatelessWidget {
       padding: EdgeInsets.all(7),
       margin: EdgeInsets.symmetric(vertical: 7),
       decoration: ShapeDecoration(
-          color: appThemeData.accentColor,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(16)))),
+        color: appThemeData.accentColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(16),
+          ),
+        ),
+      ),
       child: Row(
         children: <Widget>[
           Expanded(

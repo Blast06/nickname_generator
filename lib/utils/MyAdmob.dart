@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:logger/logger.dart';
 import 'package:get/get.dart';
 
-const TEST = true;
+const TEST = false;
 
 class MyAdmob {
   //TEST
@@ -33,21 +33,21 @@ class MyAdmob {
   static final String PROD_app_id_ios =
       'ca-app-pub-4473546092325949~4388446117';
   static final String PROD_app_id_android =
-      'ca-app-pub-4473546092325949~4571052556';
+      'ca-app-pub-4473546092325949~4277835673';
   static final String PROD_banner_id_ios =
       'ca-app-pub-4473546092325949/1418119107';
   static final String PROD_banner_id_ios2 =
       'ca-app-pub-4473546092325949/9782823115';
   static final String PROD_banner_id_android =
-      'ca-app-pub-4473546092325949/9631807547';
+      'ca-app-pub-4473546092325949/5715681057';
   static final String PROD_banner_id_android2 =
-      'ca-app-pub-4473546092325949/9782823115';
+      'ca-app-pub-4473546092325949/2797233046';
   static final String PROD_interstitial_id_ios =
       'ca-app-pub-4473546092325949/5977496040';
   static final String PROD_interstitial_id_android =
-      'ca-app-pub-4473546092325949/7977432875';
+      'ca-app-pub-4473546092325949/7857988037';
   static final String PROD_open_ad_id_android =
-      'ca-app-pub-4473546092325949/3996337480';
+      'ca-app-pub-4473546092325949/3727171335';
   static final String PROD_open_ad_id_ios =
       'ca-app-pub-4473546092325949/3067270360';
 

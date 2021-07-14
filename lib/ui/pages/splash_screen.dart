@@ -2,25 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:generator/controllers/SplashController.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
+import 'package:rive/rive.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
+  @override
+  _SplashPageState createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
   final sp = Get.put(SplashController());
-  
+  RiveAnimationController _controller;
+  @override
+  void initState() {
+    super.initState();
+    // _controller = SimpleAnimation('idle', autoplay: true);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircularProgressIndicator(
-              backgroundColor: appThemeData.primaryColor,
+            Expanded(
+              /// Para fines practicos usarremos esta animacion
+              /// disponible en linea.
+              child: RiveAnimation.asset(
+                'assets/splash.riv',
+                fit: BoxFit.cover,
+              ),
             ),
-            SizedBox(
-              height: 5,
-            ),
-            Text('loading_txt'.tr)
+            Text(
+              'loading_txt'.tr,
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            )
           ],
         ),
       ),

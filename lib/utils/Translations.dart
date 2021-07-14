@@ -5,7 +5,7 @@ class MyTransalations extends Translations {
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
         'en': {
-          'title': 'Nicknames For Tiktok',
+          'title': 'Nicknames Generator',
           'bottom_bar_home': 'Home',
           'bottom_bar_privacy': 'Privacy Policy',
           'bottom_bar_about': 'Privacy Po',
@@ -28,7 +28,7 @@ class MyTransalations extends Translations {
           'symbolsListText': 'More symbols'
         },
         'es': {
-          'title': 'Nombres para Tiktok',
+          'title': 'Generador de Nombres',
           'bottom_bar_home': 'Inicio',
           'bottom_bar_privacy': 'Politicas privacidad',
           'bottom_bar_about': 'Sobre',

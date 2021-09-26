@@ -19,6 +19,7 @@ class SymbolsListPage extends StatefulWidget {
 
 class _SymbolsListPageState extends State<SymbolsListPage> {
   final sc = Get.put(SymbolsListcontroller());
+  final hc = Get.put(HomeController());
 
   //setting admob to initialize it
   final ac = Get.find<AdmobController>();
@@ -30,6 +31,7 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
   void initState() {
     super.initState();
     // hc.checkReview(); //verify for review
+
     bannerController.load();
 
     bannerController.onEvent.listen((e) {
@@ -88,7 +90,7 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
               child: ListView.builder(
                 itemCount: _.symbolsList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  _.checkReview();
+                  // _.checkReview();
                   // int lastOne = symbols.length - 1;
                   // if (index == lastOne) {
                   //   return Container(

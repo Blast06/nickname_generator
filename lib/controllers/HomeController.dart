@@ -40,7 +40,7 @@ class HomeController extends GetxController {
     for (var i = 0; i < symbols2.length; i++) {
       moreSymbolsList.add(symbols2[i].symbol);
     }
-    logger.v(moreSymbolsList);
+    // logger.v(moreSymbolsList);
   }
 
   getSymbols(int index) {
@@ -97,6 +97,7 @@ class HomeController extends GetxController {
 
   void changeCurrentIndex(int index) {
     currentIndex = index;
+    logger.v("This is the INDEX: $index");
     update();
   }
 

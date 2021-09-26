@@ -5,7 +5,7 @@ class MyTransalations extends Translations {
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
         'en': {
-          'title': 'Nicknames Generator',
+          'title': 'Names Generator for Roblox',
           'bottom_bar_home': 'Home',
           'bottom_bar_privacy': 'Privacy Policy',
           'bottom_bar_about': 'Privacy Po',

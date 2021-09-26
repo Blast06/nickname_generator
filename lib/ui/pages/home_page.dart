@@ -12,6 +12,7 @@ import 'package:generator/utils/MyAdmob.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
 import 'package:native_admob_flutter/native_admob_flutter.dart';
 
@@ -44,10 +45,9 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 80,
             ),
-            Text(
-              MyAdmob.getAppName(),
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+            Text(MyAdmob.getAppName(),
+                style: GoogleFonts.oswald(
+                    fontSize: 20, fontWeight: FontWeight.bold)),
             GetBuilder<HomeController>(
               builder: (_) => Container(
                 margin: EdgeInsets.only(top: 30, left: 18, right: 18),

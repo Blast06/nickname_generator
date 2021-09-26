@@ -52,7 +52,8 @@ class _BottomBarState extends State<BottomBar> {
                 Get.off(() => HomePage(), transition: Transition.cupertino);
                 break;
               case 1:
-                Get.off(() => SymbolsListPage(), transition: Transition.cupertino);
+                Get.off(() => SymbolsListPage(),
+                    transition: Transition.cupertino);
                 break;
               case 2:
                 Get.off(() => PrivacyPolicy(),

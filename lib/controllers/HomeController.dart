@@ -80,6 +80,10 @@ class HomeController extends GetxController {
         // logger.v(moreSymbolsList);
         symbols = moreSymbolsList;
         break;
+
+      case 7:
+        symbols = moreSymbolsList;
+        break;
     }
   }
 

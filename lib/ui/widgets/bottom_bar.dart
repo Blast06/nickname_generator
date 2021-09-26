@@ -6,6 +6,7 @@ import 'package:generator/ui/pages/symbols_list_page.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
+import 'package:logger/logger.dart';
 
 class BottomBar extends StatefulWidget {
   BottomBar({Key key}) : super(key: key);
@@ -16,6 +17,7 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   final gc = Get.put(HomeController());
+  Logger logger = Logger();
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
@@ -50,17 +52,24 @@ class _BottomBarState extends State<BottomBar> {
             switch (index) {
               case 0:
                 Get.off(() => HomePage(), transition: Transition.cupertino);
+                logger.v("INDEX => $index");
                 break;
               case 1:
                 Get.off(() => SymbolsListPage(),
                     transition: Transition.cupertino);
+                logger.v("INDEX => $index");
+
                 break;
               case 2:
                 Get.off(() => PrivacyPolicy(),
                     transition: Transition.cupertino);
+                logger.v("INDEX => $index");
+
                 break;
               default:
                 Get.off(() => HomePage(), transition: Transition.zoom);
+                logger.v("INDEX => $index");
+
                 break;
             }
           }),

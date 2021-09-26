@@ -84,7 +84,10 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
             ),
             Text(
               'symbolsListText'.tr,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: appThemeData.accentColor),
             ),
             Expanded(
               child: ListView.builder(

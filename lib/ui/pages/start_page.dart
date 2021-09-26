@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generator/controllers/HomeController.dart';
 import 'package:generator/ui/pages/home_page.dart';
 import 'package:generator/ui/widgets/bottom_bar.dart';
 import 'package:generator/utils/apptheme.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class StartPage extends StatelessWidget {
+  final hc = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,11 +56,11 @@ class StartPage extends StatelessWidget {
               color: appThemeData.highlightColor,
               child: TextButton(
                 onPressed: () {
-                  Get.off(HomePage(), transition: Transition.zoom);
+                  Get.off(() => HomePage(), transition: Transition.downToUp);
                 },
                 child: Text(
                   'START',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: appThemeData.splashColor),
                 ),
               ),
             ),

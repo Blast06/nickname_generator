@@ -45,9 +45,13 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 80,
             ),
-            Text(MyAdmob.getAppName(),
-                style: GoogleFonts.oswald(
-                    fontSize: 20, fontWeight: FontWeight.bold)),
+            Text(
+              MyAdmob.getAppName(),
+              style: GoogleFonts.oswald(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: appThemeData.accentColor),
+            ),
             GetBuilder<HomeController>(
               builder: (_) => Container(
                 margin: EdgeInsets.only(top: 30, left: 18, right: 18),
@@ -72,11 +76,12 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.autorenew),
-                    onPressed: () => hc.generateRandomNickName(),
-                  ),
+                      icon: Icon(Icons.autorenew),
+                      onPressed: () => hc.generateRandomNickName(),
+                      color: appThemeData.accentColor),
                   IconButton(
                       icon: Icon(Icons.copy_rounded),
+                      color: appThemeData.accentColor,
                       onPressed: () {
                         Clipboard.setData(ClipboardData(text: hc.nickName));
                         Get.snackbar("snackbar_download_title".tr,

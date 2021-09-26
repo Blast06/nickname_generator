@@ -26,7 +26,7 @@ class SplashController extends GetxController {
     // await getIgVideo(igUrl);
     await Future.delayed(Duration(seconds: 3), () {
       admob.showAppOpen();
-      Get.off(StartPage(), transition: Transition.zoom);
+      Get.off(() => StartPage(), transition: Transition.zoom);
     });
   }
 

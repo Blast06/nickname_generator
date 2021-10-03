@@ -76,27 +76,54 @@ class _NamesPageState extends State<NamesPage> {
         if (Platform.isIOS) hc.hideKeyboard(context);
       },
       child: Scaffold(
-        backgroundColor: appThemeData.highlightColor,
-        body: GetBuilder<HomeController>(
-          builder: (_) => Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+        backgroundColor: appThemeData.primaryColor,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(hc.name, style: GoogleFonts.oswald(fontSize: 24)),
-              // TextButton.icon(
-              //   icon: Icon(Icons.copy_rounded),
-              //   label: Text('copy'.tr),
-              //   style: TextButton.styleFrom(
-              //     primary: appThemeData.accentColor,
-              //   ),
-              //   onPressed: () {
-              //     Clipboard.setData(ClipboardData(text: hc.name));
-              //     Get.snackbar("snackbar_download_title".tr,
-              //         "snackbar_download_message".tr,
-              //         snackPosition: SnackPosition.BOTTOM,
-              //         backgroundColor: appThemeData.accentColor);
-              //   },
-              // )
+              SizedBox(
+                height: 50,
+              ),
+              Container(
+                color: Colors.red,
+              ),
+              GetBuilder<HomeController>(
+                builder: (_) => Text(hc.name,
+                    style: GoogleFonts.oswald(
+                        fontSize: 38, color: appThemeData.accentColor)),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GetBuilder<HomeController>(
+                      builder: (_) => TextButton.icon(
+                            icon: Icon(Icons.copy_rounded),
+                            label: Text('copy'.tr),
+                            style: TextButton.styleFrom(
+                              primary: appThemeData.splashColor,
+                            ),
+                            onPressed: () {
+                              Clipboard.setData(ClipboardData(text: hc.name));
+                              Get.snackbar("snackbar_name_copied".tr,
+                                  "snackbar_name_copied_message".tr,
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: appThemeData.splashColor);
+                            },
+                          )),
+                  GetBuilder<HomeController>(
+                      builder: (_) => TextButton.icon(
+                            icon: Icon(Icons.autorenew),
+                            label: Text('generate_another'.tr),
+                            style: TextButton.styleFrom(
+                              primary: appThemeData.splashColor,
+                            ),
+                            onPressed: () {
+                              hc.generateRandomNames(2);
+                            },
+                          )),
+                ],
+              )
 
               //TODO: Use svg icon
 

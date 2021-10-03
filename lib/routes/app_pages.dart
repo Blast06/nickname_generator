@@ -1,4 +1,5 @@
 import 'package:generator/ui/pages/home_page.dart';
+import 'package:generator/ui/pages/names_page.dart';
 import 'package:generator/ui/pages/splash_screen.dart';
 import 'package:generator/ui/pages/start_page.dart';
 import 'package:generator/ui/pages/symbols_page.dart';
@@ -11,5 +12,6 @@ class AppPages {
     GetPage(name: Routes.START, page: () => StartPage()),
     GetPage(name: Routes.HOME_PAGE, page: () => HomePage()),
     GetPage(name: Routes.SYMBOLS_PAGE, page: () => SymbolsPage()),
+    GetPage(name: Routes.NAMES_PAGE, page: () => NamesPage()),
   ];
 }

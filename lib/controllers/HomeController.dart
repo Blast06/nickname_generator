@@ -13,6 +13,7 @@ class HomeController extends GetxController {
   // HttpApi http = HttpApi();
   String profile;
   String nickName = "Nickname";
+  String name = "Michael Jackson";
   String testString = "(¯`·._.·[*]·._.·´¯)";
   Faker faker = Faker();
 
@@ -110,9 +111,20 @@ class HomeController extends GetxController {
     update();
   }
 
-  generateRandomNickName() {
-    String text = faker.internet.userName();
-    changeNickName(text);
+  changeName(text) {
+    name = text;
+    update();
+  }
+
+  generateRandomNames(int choice) {
+    if (choice == 1) {
+      String text = faker.internet.userName();
+      changeNickName(text);
+    } else {
+      String text = faker.person.name() + faker.person.lastName();
+      changeName(text);
+    }
+    update();
   }
 
   String replaceString(text, textToReplace) {

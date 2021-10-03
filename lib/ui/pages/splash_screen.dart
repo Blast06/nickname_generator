@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
               /// Para fines practicos usarremos esta animacion
               /// disponible en linea.
               child: RiveAnimation.asset(
-                'assets/splash.riv',
+                'assets/splash2.riv',
                 fit: BoxFit.cover,
               ),
             ),

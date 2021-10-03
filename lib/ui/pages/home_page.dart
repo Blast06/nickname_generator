@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
         if (Platform.isIOS) hc.hideKeyboard(context);
       },
       child: Scaffold(
-        backgroundColor: appThemeData.highlightColor,
+        backgroundColor: appThemeData.primaryColor,
         // appBar: AppBar(
         //   title: Text('Nickname Generator'),
         // ),
@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   IconButton(
                       icon: Icon(Icons.autorenew),
-                      onPressed: () => hc.generateRandomNickName(),
+                      onPressed: () => hc.generateRandomNames(1),
                       color: appThemeData.accentColor),
                   IconButton(
                       icon: Icon(Icons.copy_rounded),

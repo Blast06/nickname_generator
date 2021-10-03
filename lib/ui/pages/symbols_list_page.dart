@@ -3,6 +3,7 @@ import 'package:generator/controllers/AdmobController.dart';
 import 'package:generator/controllers/HomeController.dart';
 import 'package:generator/controllers/SymbolsListController.dart';
 import 'package:generator/routes/app_pages.dart';
+import 'package:generator/ui/pages/names_page.dart';
 import 'package:generator/ui/pages/symbols_page.dart';
 import 'package:generator/ui/widgets/bottom_bar.dart';
 import 'package:generator/ui/widgets/slim_card.dart';
@@ -74,8 +75,7 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
     );
 
     return Scaffold(
-      backgroundColor:
-          appThemeData.highlightColor, //TODO: ADD THIS TO THE THEME FILE
+      backgroundColor: appThemeData.backgroundColor,
       body: GetBuilder<HomeController>(
         builder: (_) => Column(
           children: [
@@ -94,15 +94,26 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
                 itemCount: _.symbolsList.length,
                 itemBuilder: (BuildContext context, int index) {
                   // _.checkReview();
-                  // int lastOne = symbols.length - 1;
-                  // if (index == lastOne) {
-                  //   return Container(
-                  //       margin: EdgeInsets.only(left: 7, right: 7),
-                  //       child: TextButton(
-                  //         onPressed: () {},
-                  //         child: Text('More'),
-                  //       ));
-                  // }
+                  int lastOne = _.symbolsList.length - 1;
+                  if (index == lastOne) {
+                    return GestureDetector(
+                      onTap: () {
+                        logger.v("PROBANDO PARA IR A PAGINA 👌👌 $index");
+                        Get.off(NamesPage());
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(left: 7, right: 7),
+                        child: SlimCard(
+                          text: 'Names for RPG',
+                          widget: Icon(
+                            Icons.arrow_forward_ios,
+                            color: appThemeData.splashColor,
+                          ),
+                          show: true,
+                        ),
+                      ),
+                    );
+                  }
 
                   // return Text('holaa');
                   return GestureDetector(
@@ -115,8 +126,11 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
                       margin: EdgeInsets.only(left: 7, right: 7),
                       child: SlimCard(
                         text: _.symbolsList[index],
-                        widget: Icon(Icons.arrow_forward_ios),
-                        show: false,
+                        widget: Icon(
+                          Icons.arrow_forward_ios,
+                          color: appThemeData.splashColor,
+                        ),
+                        show: true,
                       ),
                     ),
                   );

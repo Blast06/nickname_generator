@@ -5,6 +5,7 @@ class MyTransalations extends Translations {
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
         'en': {
+          'start_text': 'RPG',
           'title': 'Names for RPG',
           'bottom_bar_home': 'Home',
           'bottom_bar_privacy': 'Privacy Policy',
@@ -21,13 +22,17 @@ class MyTransalations extends Translations {
           'snackbar_download_title': 'Nick copied!',
           'snackbar_download_title2': 'Text copied!',
           'snackbar_download_message': 'Now can paste it',
+          'snackbar_name_copied': 'Name copied',
+          'snackbar_name_copied_message': 'Now can paste it',
           'loading_txt': 'Loading...',
           'account_warning': 'Make sure the account is public!',
           'copy': 'Copy',
+          'generate_another': 'Generate',
           "symbols": "More symbols",
-          'symbolsListText': 'More symbols'
+          'symbolsListText': 'More symbols',
         },
         'es': {
+          'start_text': 'RPG',
           'title': 'Nombres para RPGs',
           'bottom_bar_home': 'Inicio',
           'bottom_bar_privacy': 'Politicas privacidad',
@@ -44,9 +49,12 @@ class MyTransalations extends Translations {
           'snackbar_download_title': 'Nick copiado!',
           'snackbar_download_title2': 'Texto copiado!',
           'snackbar_download_message': 'Revisa tu portapeles',
+          'snackbar_name_copied': 'Nombre copiado',
+          'snackbar_name_copied_message': 'Ya puedes pegarlo',
           'loading_txt': 'Cargando...',
           'account_warning': 'Asegurate de que la cuenta es publica',
           'copy': 'Copiar',
+          'generate_another': 'Generar otro',
           "symbols": "Simbolos",
           'symbolsListText': 'Mas estilos'
         },

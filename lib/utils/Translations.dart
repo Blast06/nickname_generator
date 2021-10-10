@@ -6,7 +6,9 @@ class MyTransalations extends Translations {
   Map<String, Map<String, String>> get keys => {
         'en': {
           'start_text': 'RPG',
+          'start_text_btn': 'START',
           'title': 'Names for RPG',
+          'names_page': 'Names for RPG',
           'bottom_bar_home': 'Home',
           'bottom_bar_privacy': 'Privacy Policy',
           'bottom_bar_about': 'Privacy Po',
@@ -34,6 +36,8 @@ class MyTransalations extends Translations {
         'es': {
           'start_text': 'RPG',
           'title': 'Nombres para RPGs',
+          'start_text_btn': 'INICIAR',
+          'names_page': 'Nombres para RPG',
           'bottom_bar_home': 'Inicio',
           'bottom_bar_privacy': 'Politicas privacidad',
           'bottom_bar_about': 'Sobre',

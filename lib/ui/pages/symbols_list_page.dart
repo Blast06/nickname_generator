@@ -104,7 +104,7 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
                       child: Container(
                         margin: EdgeInsets.only(left: 7, right: 7),
                         child: SlimCard(
-                          text: 'Names for RPG',
+                          text: 'names_page'.tr,
                           widget: Icon(
                             Icons.arrow_forward_ios,
                             color: appThemeData.splashColor,

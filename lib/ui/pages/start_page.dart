@@ -20,7 +20,7 @@ class StartPage extends StatelessWidget {
           Text('start_text'.tr,
               style: GoogleFonts.oswald(
                   fontSize: 38, fontWeight: FontWeight.w500)),
-          Text('Names generator', style: GoogleFonts.oswald(fontSize: 14)),
+          Text('title'.tr, style: GoogleFonts.oswald(fontSize: 14)),
           SizedBox(
             height: 8,
           ),
@@ -70,7 +70,7 @@ class StartPage extends StatelessWidget {
                   Get.off(() => HomePage(), transition: Transition.downToUp);
                 },
                 child: Text(
-                  'START',
+                  'start_text_btn'.tr,
                   style: TextStyle(
                       color: appThemeData.splashColor,
                       fontWeight: FontWeight.bold),

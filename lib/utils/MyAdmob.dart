@@ -31,25 +31,25 @@ class MyAdmob {
 
   //PROD
   static final String PROD_app_id_ios =
-      'ca-app-pub-4473546092325949~4388446117';
+      'ca-app-pub-4473546092325949~9911613722';
   static final String PROD_app_id_android =
-      'ca-app-pub-4473546092325949~4277835673';
+      'ca-app-pub-4473546092325949~9494409811';
   static final String PROD_banner_id_ios =
-      'ca-app-pub-4473546092325949/1418119107';
+      'ca-app-pub-4473546092325949/8732579210';
   static final String PROD_banner_id_ios2 =
-      'ca-app-pub-4473546092325949/9782823115';
+      'ca-app-pub-4473546092325949/3480252531';
   static final String PROD_banner_id_android =
-      'ca-app-pub-4473546092325949/5715681057';
+      'ca-app-pub-4473546092325949/1475786166';
   static final String PROD_banner_id_android2 =
-      'ca-app-pub-4473546092325949/2797233046';
+      'ca-app-pub-4473546092325949/9162704490';
   static final String PROD_interstitial_id_ios =
       'ca-app-pub-4473546092325949/5977496040';
   static final String PROD_interstitial_id_android =
       'ca-app-pub-4473546092325949/7857988037';
   static final String PROD_open_ad_id_android =
-      'ca-app-pub-4473546092325949/3727171335';
+      'ca-app-pub-4473546092325949/7096063917';
   static final String PROD_open_ad_id_ios =
-      'ca-app-pub-4473546092325949/3067270360';
+      'ca-app-pub-4473546092325949/8948201639';
 
   static String getAppName() {
     if (Platform.isAndroid) {

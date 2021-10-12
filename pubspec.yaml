@@ -35,7 +35,7 @@ dependencies:
   in_app_review: ^2.0.1
   flutter_markdown: ^0.6.1
   url_launcher: ^6.0.3
-  firebase_core: ^1.4.0
+  firebase_core: ^1.7.0
   firebase_crashlytics: "^2.0.2"
   rive: ^0.7.30
   google_fonts: ^2.1.0

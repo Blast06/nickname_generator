@@ -29,7 +29,7 @@ class PrivacyPolicy extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomBar(),
+      // bottomNavigationBar: BottomBar(),
     );
   }
 }

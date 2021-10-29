@@ -132,7 +132,7 @@ class _NamesPageState extends State<NamesPage> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomBar(),
+        // bottomNavigationBar: BottomBar(),
       ),
     );
   }

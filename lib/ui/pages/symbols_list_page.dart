@@ -21,6 +21,7 @@ class SymbolsListPage extends StatefulWidget {
 class _SymbolsListPageState extends State<SymbolsListPage> {
   final sc = Get.put(SymbolsListcontroller());
   final hc = Get.put(HomeController());
+  AnimationController animationController;
 
   //setting admob to initialize it
   final ac = Get.find<AdmobController>();
@@ -60,6 +61,7 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
   @override
   void dispose() {
     super.dispose();
+    animationController.dispose();
   }
 
   @override
@@ -141,7 +143,7 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomBar(),
+      // bottomNavigationBar: BottomBar(),
     );
   }
 }

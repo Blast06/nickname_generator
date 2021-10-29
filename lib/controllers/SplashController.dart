@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:generator/data/models/Video.dart';
 import 'package:generator/ui/pages/home_page.dart';
 import 'package:generator/ui/pages/start_page.dart';

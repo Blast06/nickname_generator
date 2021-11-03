@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:generator/controllers/AdmobController.dart';
+import 'package:generator/controllers/GlobalController.dart';
 import 'package:generator/routes/app_pages.dart';
 import 'package:generator/utils/MyAdmob.dart';
 import 'package:generator/utils/Translations.dart';
@@ -54,6 +55,7 @@ void main() async {
   // RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("34FEAA5868007783EAE019607349D798"))
   MobileAds.setTestDeviceIds(['34FEAA5868007783EAE019607349D798']);
   Get.put(AdmobController());
+  Get.put(GlobalController());
   // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   // Admob.requestTrackingAuthorization();
   //

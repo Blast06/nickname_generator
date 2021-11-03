@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:generator/controllers/GlobalController.dart';
 import 'package:generator/controllers/HomeController.dart';
 import 'package:generator/routes/app_pages.dart';
 import 'package:generator/ui/pages/home_page.dart';
@@ -8,6 +10,7 @@ import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:logger/logger.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class BottomBar extends StatefulWidget {
   BottomBar({Key key}) : super(key: key);
@@ -17,7 +20,6 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  final gc = Get.put(HomeController());
   Logger logger = Logger();
   AnimationController animationController;
 
@@ -36,7 +38,7 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
+    return GetBuilder<GlobalController>(
       builder: (_) => CustomNavigationBar(
           iconSize: 30,
           selectedColor: Colors.white,
@@ -62,9 +64,9 @@ class _BottomBarState extends State<BottomBar> {
               ),
             ),
           ],
-          currentIndex: gc.currentIndex,
+          currentIndex: _.currentIndex,
           onTap: (index) {
-            gc.changeCurrentIndex(index);
+            _.changeCurrentIndex(index);
             switch (index) {
               case 0:
                 Get.off(() => HomePage(), transition: Transition.cupertino);
@@ -95,4 +97,21 @@ class _BottomBarState extends State<BottomBar> {
           }),
     );
   }
+}
+
+List<PersistentBottomNavBarItem> _navBarsItems() {
+  return [
+    PersistentBottomNavBarItem(
+      icon: Icon(CupertinoIcons.home),
+      title: ("Home"),
+      activeColorPrimary: CupertinoColors.activeBlue,
+      inactiveColorPrimary: CupertinoColors.systemGrey,
+    ),
+    PersistentBottomNavBarItem(
+      icon: Icon(CupertinoIcons.settings),
+      title: ("Settings"),
+      activeColorPrimary: CupertinoColors.activeBlue,
+      inactiveColorPrimary: CupertinoColors.systemGrey,
+    ),
+  ];
 }

@@ -1,13 +1,15 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:generator/data/models/Symbols.dart';
+import 'package:generator/ui/pages/home_page.dart';
+import 'package:generator/ui/pages/privacy_policy.dart';
+import 'package:generator/ui/pages/symbols_list_page.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:basic_utils/basic_utils.dart';
 import 'package:in_app_review/in_app_review.dart';
 
 class HomeController extends GetxController {
-  int currentIndex = 0;
   var logger = Logger();
   bool loadingInfo = false;
   // HttpApi http = HttpApi();
@@ -34,7 +36,7 @@ class HomeController extends GetxController {
     'ASCII ø å ∂ œ',
     'Operators ∽ ∾ ∿≀ ≁ ≂ ',
     'Nick alphabet ◢ ◣ ◤ ◥',
-    'More Symbols'
+    // 'More Symbols'
   ];
 
   void conver2List() {
@@ -44,12 +46,15 @@ class HomeController extends GetxController {
     // logger.v(moreSymbolsList);
   }
 
-  getSymbols(int index) {
-    logger.v("$index numero");
-    switch (index) {
+  getSymbols(int caseIndex) {
+    logger.v("$caseIndex numero");
+    switch (caseIndex) {
       case 0:
         // logger.v(spheresList);
         symbols = spheresList;
+        logger.v(symbols);
+        update();
+
         break;
 
       case 1:
@@ -100,12 +105,6 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  void changeCurrentIndex(int index) {
-    currentIndex = index;
-    logger.v("This is the INDEX: $index");
-    update();
-  }
-
   changeNickName(text) {
     nickName = text;
     update();
@@ -142,8 +141,6 @@ class HomeController extends GetxController {
       update();
     }
     // nickName = text.substring(position,position);
-
-    logger.v("nickname: $nickName text: $text position: $position");
   }
 
   // checks if review is available

@@ -1,15 +1,16 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:generator/controllers/HomeController.dart';
-import 'package:generator/controllers/SymbolsListController.dart';
-import 'package:generator/data/models/Symbols.dart';
-import 'package:generator/data/models/SymbolsPageList.dart';
-import 'package:generator/ui/widgets/bottom_bar.dart';
-import 'package:generator/ui/widgets/custom_search_text.dart';
-import 'package:generator/ui/widgets/slim_card.dart';
-import 'package:generator/utils/MyAdmob.dart';
-import 'package:generator/utils/apptheme.dart';
+import '/controllers/HomeController.dart';
+import '/controllers/SymbolsListController.dart';
+import '/data/models/Symbols.dart';
+import '/data/models/SymbolsPageList.dart';
+import '/ui/widgets/bottom_bar.dart';
+import '/ui/widgets/curved_navigation_bar.dart';
+import '/ui/widgets/custom_search_text.dart';
+import '/ui/widgets/slim_card.dart';
+import '/utils/MyAdmob.dart';
+import '/utils/apptheme.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -127,7 +128,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: BottomBar(),
+        bottomNavigationBar: CurvedNavigationBar(),
       ),
     );
   }

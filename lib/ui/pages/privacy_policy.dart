@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:generator/controllers/AboutController.dart';
 import 'package:generator/ui/widgets/bottom_bar.dart';
+import 'package:generator/ui/widgets/curved_navigation_bar.dart';
 import 'package:get/get.dart';
 
 class PrivacyPolicy extends StatelessWidget {
@@ -29,7 +30,7 @@ class PrivacyPolicy extends StatelessWidget {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: CurvedNavigationBar(),
     );
   }
 }

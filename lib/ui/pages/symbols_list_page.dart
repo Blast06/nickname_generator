@@ -6,6 +6,7 @@ import 'package:generator/routes/app_pages.dart';
 import 'package:generator/ui/pages/names_page.dart';
 import 'package:generator/ui/pages/symbols_page.dart';
 import 'package:generator/ui/widgets/bottom_bar.dart';
+import 'package:generator/ui/widgets/curved_navigation_bar.dart';
 import 'package:generator/ui/widgets/slim_card.dart';
 import 'package:generator/utils/MyAdmob.dart';
 import 'package:generator/utils/apptheme.dart';
@@ -21,11 +22,6 @@ class SymbolsListPage extends StatefulWidget {
 class _SymbolsListPageState extends State<SymbolsListPage> {
   final sc = Get.put(SymbolsListcontroller());
   final hc = Get.put(HomeController());
-  AnimationController animationController;
-
-  //setting admob to initialize it
-  final ac = Get.find<AdmobController>();
-  final bannerController = BannerAdController();
 
   Logger logger = Logger();
 
@@ -33,49 +29,15 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
   void initState() {
     super.initState();
     // hc.checkReview(); //verify for review
-
-    bannerController.load();
-
-    bannerController.onEvent.listen((e) {
-      final event = e.keys.first;
-      switch (event) {
-        case BannerAdEvent.loading:
-          logger.i('BannerAdEvent: loading');
-          break;
-        case BannerAdEvent.loaded:
-          logger.i('BannerAdEvent: loaded');
-          break;
-        case BannerAdEvent.loadFailed:
-          final errorCode = e.values.first;
-          logger.i('BannerAdEvent: loadFailed $errorCode');
-          break;
-        case BannerAdEvent.impression:
-          logger.i('BannerAdEvent: ad rendered');
-          break;
-        default:
-          break;
-      }
-    });
   }
 
   @override
   void dispose() {
     super.dispose();
-    animationController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final bannerAd = BannerAd(
-      controller: bannerController,
-      unitId: MyAdmob.getBannerAdId_2(),
-      size: BannerSize.ADAPTIVE,
-      options: BannerAdOptions(
-        reloadWhenSizeChanges: false,
-        reloadWhenUnitIdChanges: false,
-      ),
-    );
-
     return Scaffold(
       backgroundColor: appThemeData.backgroundColor,
       body: GetBuilder<HomeController>(
@@ -139,11 +101,10 @@ class _SymbolsListPageState extends State<SymbolsListPage> {
                 },
               ),
             ),
-            bannerAd
           ],
         ),
       ),
-      // bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: CurvedNavigationBar(),
     );
   }
 }

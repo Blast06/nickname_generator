@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
 class GlobalController extends GetxController {
-  int currentIndex = 1;
+  int currentIndex = 0;
   Logger logger = Logger();
   @override
   void onInit() {

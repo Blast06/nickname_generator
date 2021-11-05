@@ -21,40 +21,14 @@ class SymbolsPage extends StatefulWidget {
 class _SymbolsPageState extends State<SymbolsPage> {
   final hc = Get.find<HomeController>();
 
-  final ac = Get.find<AdmobController>();
-
   final TextEditingController nameController = TextEditingController();
 
   Logger logger = Logger();
-
-  final bannerController = BannerAdController();
 
   @override
   void initState() {
     super.initState();
     //hc.checkReview(); //verify for review
-    bannerController.load();
-
-    bannerController.onEvent.listen((e) {
-      final event = e.keys.first;
-      switch (event) {
-        case BannerAdEvent.loading:
-          logger.i('BannerAdEvent: loading');
-          break;
-        case BannerAdEvent.loaded:
-          logger.i('BannerAdEvent: loaded');
-          break;
-        case BannerAdEvent.loadFailed:
-          final errorCode = e.values.first;
-          logger.i('BannerAdEvent: loadFailed $errorCode');
-          break;
-        case BannerAdEvent.impression:
-          logger.i('BannerAdEvent: ad rendered');
-          break;
-        default:
-          break;
-      }
-    });
   }
 
   @override
@@ -64,13 +38,6 @@ class _SymbolsPageState extends State<SymbolsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final bannerAd = BannerAd(
-        controller: bannerController,
-        size: BannerSize.ADAPTIVE,
-        options: BannerAdOptions(
-          reloadWhenSizeChanges: false,
-          reloadWhenUnitIdChanges: false,
-        ));
     return GestureDetector(
       onTap: () {
         if (Platform.isIOS) hc.hideKeyboard(context);

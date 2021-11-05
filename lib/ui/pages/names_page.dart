@@ -6,6 +6,7 @@ import 'package:generator/controllers/AdmobController.dart';
 import 'package:generator/controllers/HomeController.dart';
 import 'package:generator/data/models/Symbols.dart';
 import 'package:generator/ui/widgets/bottom_bar.dart';
+import 'package:generator/ui/widgets/curved_navigation_bar.dart';
 import 'package:generator/ui/widgets/custom_search_text.dart';
 import 'package:generator/utils/apptheme.dart';
 import 'package:get/get.dart';
@@ -132,7 +133,7 @@ class _NamesPageState extends State<NamesPage> {
             ],
           ),
         ),
-        // bottomNavigationBar: BottomBar(),
+        bottomNavigationBar: CurvedNavigationBar(),
       ),
     );
   }
